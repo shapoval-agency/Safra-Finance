@@ -1744,12 +1744,13 @@ body.is-menu-open .header {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+
 .cases__swiper-slide-inner:hover,
 .cases__swiper-slide-inner:focus,
 .cases__swiper-slide-inner:active {
   border-radius: 20px;
-background: var(--colors-base-source);
-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.06);
+  background: var(--colors-base-source);
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.06);
 }
 
 .cases__swiper-slide-inner::before {
@@ -2170,7 +2171,8 @@ box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.06);
 }
 
 .review-fancybox .fancybox__content {
-  padding: 12px 58px 12px 24px;
+  padding: 40px 58px 12px 24px;
+  max-width: 640px;
 }
 
 .review-fancybox .review-card__content {
@@ -2553,8 +2555,8 @@ textarea.cta__form-input {
 }
 
 .faq__item-button:hover,
- .faq__item-button:focus,
- .faq__item-button:active {
+.faq__item-button:focus,
+.faq__item-button:active {
   border-radius: 99px;
   border: 1.5px solid var(--colors-depp-blue-source, #0A2140);
   background: var(--colors-depp-blue-source, #0A2140);
@@ -2585,7 +2587,7 @@ textarea.cta__form-input {
   text-transform: uppercase;
 }
 
-.faq__button:hover img{
+.faq__button:hover img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7492%) hue-rotate(129deg) brightness(101%) contrast(102%);
 }
 
@@ -3213,17 +3215,17 @@ textarea.cta__form-input {
   transition: all 0.3s ease-in-out;
 }
 
-.cities__box-swiper-content > span:hover,
-.cities__box-swiper-content > span:focus,
-.cities__box-swiper-content > span:active {
+.cities__box-swiper-content>span:hover,
+.cities__box-swiper-content>span:focus,
+.cities__box-swiper-content>span:active {
   border-radius: 99px;
   border: 1.5px solid var(--colors-depp-blue-source);
   background: var(--colors-depp-blue-source);
 }
 
-.cities__box-swiper-content > span:hover img,
-.cities__box-swiper-content > span:focus img,
-.cities__box-swiper-content > span:active img {
+.cities__box-swiper-content>span:hover img,
+.cities__box-swiper-content>span:focus img,
+.cities__box-swiper-content>span:active img {
   filter: brightness(0) saturate(100%) invert(94%) sepia(0%) saturate(0%) hue-rotate(275deg) brightness(104%) contrast(111%);
 }
 
@@ -4006,6 +4008,67 @@ textarea.cta__form-input {
   width: 100%;
 }
 
+.review-fancybox .review-card__content {
+  padding: 0;
+}
+
+.review-fancybox .f-button {
+  --f-button-width: 38px;
+  --f-button-height: 38px;
+  --f-button-color: var(--colors-depp-blue-source, #0A2140);
+  --f-button-hover-color: #fff;
+  --f-button-bg: transparent;
+  --f-button-hover-bg: var(--colors-depp-blue-source, #0A2140);
+  --f-button-active-bg: var(--colors-depp-blue-source, #0A2140);
+  --f-button-svg-width: 14px;
+  --f-button-svg-height: 14px;
+  --f-button-svg-stroke-width: 1.5;
+  --f-button-svg-fill: none;
+  top: 12px !important;
+  right: 12px !important;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border-radius: 99px;
+  border: 1.5px solid var(--colors-depp-blue-source, #0A2140);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--f-button-color);
+  background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.review-fancybox .f-button:hover,
+.review-fancybox .f-button:focus-visible {
+  color: #fff;
+  background: var(--colors-depp-blue-source, #0A2140);
+}
+
+.review-fancybox .f-button svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  color: inherit;
+}
+
+.review-fancybox .f-button svg path {
+  fill: #0A2140;
+  stroke: #0A2140;
+}
+
+.review-fancybox .f-button:hover svg,
+.review-fancybox .f-button:focus-visible svg,
+.review-fancybox .f-button:hover svg path,
+.review-fancybox .f-button:focus-visible svg path {
+  stroke: #fff;
+  color: #fff;
+}
 
 
 
@@ -4820,11 +4883,11 @@ textarea.cta__form-input {
     display: flex;
   }
 
-  .cities__box-body{
+  .cities__box-body {
     gap: 48px;
   }
 
-  .cities__box-list-link{
+  .cities__box-list-link {
     padding: 24px;
   }
 
@@ -5011,7 +5074,7 @@ textarea.cta__form-input {
     padding: 13px 24px;
   }
 
-  .seo__right-item  {
+  .seo__right-item {
     height: 330px;
   }
 }
@@ -5281,7 +5344,7 @@ textarea.cta__form-input {
     font-size: var(--font-size-22px);
     font-weight: 400;
     line-height: 140%;
-    letter-spacing:  0;
+    letter-spacing: 0;
   }
 
   .popup__text {
@@ -5322,4 +5385,5 @@ textarea.cta__form-input {
   #popup-success .popup__note {
     padding: 28px 20px;
   }
+
 }
