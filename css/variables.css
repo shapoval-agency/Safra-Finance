@@ -1,0 +1,104 @@
+/* safra-scc — desktop default, mobile overrides */
+
+:root {
+
+  /* Font family */
+  --font-family-e-ukraine: "e-Ukraine";
+
+  /* Font size */
+  --font-size-8px: 8px;
+  --font-size-10px: 10px;
+  --font-size-12px: 12px;
+  --font-size-14px: 14px;
+  --font-size-16px: 16px;
+  --font-size-22px: 22px;
+  --font-size-26px: 26px;
+  --font-size-32px: 32px;
+  --font-size-38px: 38px;
+  --font-size-45px: 45px;
+  --font-size-54px: 54px;
+  --font-size-64px: 64px;
+
+  /* Font weight */
+  --font-weight-bold: 700;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-ultralight: 200;
+
+  /* Letter spacing */
+  --font-spacing-0: 0px;
+  --font-spacing-1: 1px;
+  --font-spacing-2: 2px;
+  --font-spacing-8: 8px;
+  --font-spacing--1: -1px;
+  --font-spacing--2: -2px;
+
+  /* Opacity */
+  --colors-opacity-5: 5;
+  --colors-opacity-10: 10;
+  --colors-opacity-50: 50;
+  --colors-opacity-75: 75;
+  --colors-opacity-100: 100;
+
+  /* Colors / base */
+  --colors-base-100: #f1f2ff;
+  --colors-base-200: #dadced;
+  --colors-base-300: #c4c5d8;
+  --colors-base-400: #aeafc3;
+  --colors-base-500: #989aad;
+  --colors-base-600: #838598;
+  --colors-base-700: #6f7183;
+  --colors-base-800: #5c5d6f;
+  --colors-base-900: #494a5a;
+  --colors-base-1000: #373846;
+  --colors-base-black-100: #000000;
+  --colors-base-error: #ff3800;
+  --colors-base-source: #060719;
+  --colors-base-success: #04c65d;
+  --colors-base-white-50: rgba(255, 255, 255, 0.5);
+  --colors-base-white-100: #ffffff;
+
+  /* Colors / orange */
+  --colors-orange-100: #ffd58c;
+  --colors-orange-200: #ffbb6b;
+  --colors-orange-300: #ffa24d;
+  --colors-orange-400: #ff8a2f;
+  --colors-orange-500: #fb730c;
+  --colors-orange-600: #e25c00;
+  --colors-orange-700: #c84800;
+  --colors-orange-800: #ad3400;
+  --colors-orange-900: #922100;
+  --colors-orange-1000: #761000;
+  --colors-orange-source: #ee7018;
+  --colors-orange-source-10: rgba(238, 112, 24, 0.1);
+
+  /* Colors / deep blue */
+  --colors-depp-blue-100: #e7f3ff;
+  --colors-depp-blue-200: #cfdcff;
+  --colors-depp-blue-300: #b8c6ef;
+  --colors-depp-blue-400: #a1b0db;
+  --colors-depp-blue-500: #8b9bc6;
+  --colors-depp-blue-600: #7586b1;
+  --colors-depp-blue-700: #61719b;
+  --colors-depp-blue-800: #4d5e85;
+  --colors-depp-blue-900: #3b4b6e;
+  --colors-depp-blue-1000: #2a3957;
+  --colors-depp-blue-source: #0a2140;
+}
+
+/* Mobile */
+@media (max-width: 1280px) {
+  :root {
+    --font-size-10px: 8px;
+    --font-size-14px: 12px;
+    --font-size-16px: 12px;
+    --font-size-22px: 16px;
+    --font-size-26px: 16px;
+    --font-size-32px: 22px;
+    --font-size-38px: 26px;
+    --font-size-45px: 32px;
+    --font-size-54px: 38px;
+    --font-size-64px: 45px;
+  }
+}

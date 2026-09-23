@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero Section</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #edeaf6;
+  }
+
+  /* ── animated background ── */
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+  }
+  .blob-1 {
+    width: 80vw; height: 80vw;
+    background: radial-gradient(circle, #fddcc8 0%, #f9c8b0 60%, transparent 100%);
+    top: -20%; right: -15%;
+    filter: blur(60px);
+    animation: drift1 12s ease-in-out infinite;
+  }
+  .blob-2 {
+    width: 75vw; height: 75vw;
+    background: radial-gradient(circle, #c8d0f0 0%, #b8c4ee 60%, transparent 100%);
+    bottom: -20%; left: -15%;
+    filter: blur(60px);
+    animation: drift2 14s ease-in-out infinite;
+  }
+  .blob-3 {
+    width: 65vw; height: 65vw;
+    background: radial-gradient(circle, #ddd4f4 0%, #c8bcee 60%, transparent 100%);
+    top: 20%; left: 10%;
+    filter: blur(70px);
+    animation: drift3 16s ease-in-out infinite;
+  }
+  .blob-4 {
+    width: 55vw; height: 55vw;
+    background: radial-gradient(circle, #fce8d4 0%, #f8d4bc 60%, transparent 100%);
+    bottom: 5%; right: 10%;
+    filter: blur(50px);
+    animation: drift4 10s ease-in-out infinite;
+  }
+
+  @keyframes drift1 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%      { transform: translate(-20%,25%) scale(1.15); }
+  }
+  @keyframes drift2 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(18%,-22%) scale(1.12); }
+  }
+  @keyframes drift3 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33%     { transform: translate(22%,-18%) scale(1.1); }
+    66%     { transform: translate(-15%,20%) scale(0.92); }
+  }
+  @keyframes drift4 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    50%     { transform: translate(-22%,-20%) scale(1.18); }
+  }
+
+  .wave {
+    position: absolute;
+    left: -5%; width: 110%;
+    will-change: transform;
+  }
+  .wave-top    { top: -10%;    height: 70%; animation: wave-ft 14s ease-in-out infinite; transform-origin: center top; }
+  .wave-bottom { bottom: -10%; height: 70%; animation: wave-fb 18s ease-in-out infinite; transform-origin: center bottom; }
+  .wave-mid    { top: 15%;     height: 70%; animation: wave-fm 20s ease-in-out infinite; transform-origin: center; }
+
+  @keyframes wave-ft {
+    0%,100% { transform: translateY(0) scaleX(1); }
+    50%     { transform: translateY(12%) scaleX(1.05); }
+  }
+  @keyframes wave-fb {
+    0%,100% { transform: translateY(0) scaleX(1); }
+    50%     { transform: translateY(-14%) scaleX(1.04); }
+  }
+  @keyframes wave-fm {
+    0%,100% { transform: translateY(0) translateX(0); }
+    33%     { transform: translateY(8%) translateX(3%); }
+    66%     { transform: translateY(-8%) translateX(-3%); }
+  }
+
+  .path-a { animation: morph-a 14s ease-in-out infinite; }
+  .path-b { animation: morph-b 18s ease-in-out infinite; }
+  .path-c { animation: morph-c 20s ease-in-out infinite; }
+
+  @keyframes morph-a {
+    0%,100% { d: path("M0,60 C200,160 500,0   720,80  C940,160 1200,20  1440,80  L1440,320 L0,320 Z"); }
+    50%     { d: path("M0,100 C180,0   520,180 720,60  C920,-20 1220,160 1440,40  L1440,320 L0,320 Z"); }
+  }
+  @keyframes morph-b {
+    0%,100% { d: path("M0,60 C300,0   600,160 900,60  C1100,0   1300,120 1440,60  L1440,320 L0,320 Z"); }
+    50%     { d: path("M0,20 C350,140 580,0   860,100 C1060,180 1260,40  1440,100 L1440,320 L0,320 Z"); }
+  }
+  @keyframes morph-c {
+    0%,100% { d: path("M0,80  C250,20  550,160 780,60  C1000,0   1240,140 1440,80  L1440,320 L0,320 Z"); }
+    33%     { d: path("M0,40  C300,160 520,20  760,120 C980,200  1200,60  1440,120 L1440,320 L0,320 Z"); }
+    66%     { d: path("M0,120 C220,40  500,180 720,80  C940,0    1180,160 1440,60  L1440,320 L0,320 Z"); }
+  }
+
+  /* ── hero layout ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 52px 128px;
+  }
+
+  .cont { max-width: 1176px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 32px; }
+
+  /* heading */
+  .heading-block { display: flex; flex-direction: column; gap: 64px; align-items: flex-start; width: 100%; }
+  .text-block     { display: flex; flex-direction: column; gap: 32px; align-items: flex-start; width: 100%; color: #0a2140; }
+  .hero-title     { font-size: 64px; line-height: 1.2; letter-spacing: -1px; font-weight: 400; }
+  .hero-subtitle  { font-size: 22px; line-height: 1.4; font-weight: 300; }
+
+  /* cta row */
+  .cta-row   { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+  .btn-cta {
+    height: 56px; border-radius: 99px; background: white;
+    border: 1.5px solid white; padding: 0 24px;
+    font-size: 14px; line-height: 1.5; font-weight: 500; color: #060719;
+    white-space: nowrap; cursor: pointer; transition: background .2s;
+  }
+  .btn-cta:hover { background: rgba(255,255,255,.8); }
+
+  .meta-row  { display: flex; gap: 8px; align-items: center; }
+  .meta-text { font-size: 14px; color: #060719; line-height: 1.4; white-space: nowrap; }
+
+  /* nav */
+  .nav-block  { display: flex; flex-direction: column; gap: 32px; align-items: flex-end; width: 100%; }
+  .arrows     { display: flex; gap: 4px; }
+  .btn-arrow {
+    width: 56px; height: 56px; border-radius: 99px;
+    border: 1.5px solid #0a2140; background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-arrow:hover { background: #0a2140; }
+  .btn-arrow:hover svg path { fill: #f1f2ff; }
+  .btn-arrow svg path { transition: fill .2s; }
+
+  /* slide cards */
+  .cards { display: flex; gap: 16px; align-items: center; justify-content: flex-end; width: 100%; }
+  .card {
+    position: relative; background: white; height: 176px; border-radius: 16px;
+    flex-shrink: 0; width: 276px; overflow: hidden; text-align: left;
+    cursor: pointer; border: none; transition: box-shadow .2s;
+  }
+  .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.12); }
+
+  .card-bg {
+    position: absolute; inset: 0; opacity: 0; transition: opacity .5s;
+    display: flex; align-items: center; justify-content: center;
+    container-type: size;
+  }
+  .card-bg img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; transform: scaleX(-1);
+  }
+  .card-bg .grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(-89.9999991017915deg, rgba(0,0,0,0.6) 0.73833%, rgba(0,0,0,0) 101.99%);
+  }
+  .card.active .card-bg { opacity: 1; }
+
+  .card-inner {
+    position: relative; display: flex; flex-direction: column;
+    justify-content: space-between; height: 100%; padding-top: 32px;
+  }
+  .card-label {
+    padding: 0 24px 0 32px; font-size: 16px; line-height: 1.5;
+    font-weight: 500; color: #060719; transition: color .3s;
+  }
+  .card.active .card-label { color: white; }
+
+  .card-bar { width: 100%; height: 4px; overflow: hidden; }
+  .card-bar-fill { height: 100%; background: #ee7018; width: 0%; transition: width 0s linear; }
+
+  /* transitions */
+  .hero-title, .hero-subtitle, #cta-btn { transition: opacity .3s; }
+  .fade-out { opacity: 0; }
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <svg class="wave wave-top" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="ba"><feGaussianBlur stdDeviation="22"/></filter></defs>
+    <path class="path-a" fill="#c4ccea" fill-opacity="0.5" filter="url(#ba)"
+      d="M0,60 C200,160 500,0 720,80 C940,160 1200,20 1440,80 L1440,320 L0,320 Z"/>
+  </svg>
+  <svg class="wave wave-bottom" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="bb"><feGaussianBlur stdDeviation="20"/></filter></defs>
+    <path class="path-b" fill="#bec8ee" fill-opacity="0.45" filter="url(#bb)"
+      d="M0,60 C300,0 600,160 900,60 C1100,0 1300,120 1440,60 L1440,320 L0,320 Z"/>
+  </svg>
+  <svg class="wave wave-mid" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="bc"><feGaussianBlur stdDeviation="28"/></filter></defs>
+    <path class="path-c" fill="#d8ccf0" fill-opacity="0.35" filter="url(#bc)"
+      d="M0,80 C250,20 550,160 780,60 C1000,0 1240,140 1440,80 L1440,320 L0,320 Z"/>
+  </svg>
+</div>
+
+<section class="hero">
+  <div class="cont">
+
+    <div class="heading-block">
+      <div class="text-block">
+        <div class="hero-title" id="hero-title"></div>
+        <p class="hero-subtitle" id="hero-subtitle"></p>
+      </div>
+      <div class="cta-row">
+        <button class="btn-cta" id="cta-btn"></button>
+        <div class="meta-row">
+          <svg width="20" height="20" viewBox="0 0 15.0005 12.5007" fill="none">
+            <path d="M14.8172 6.69254L9.19219 12.3175C9.07491 12.4348 8.91585 12.5007 8.75 12.5007C8.58415 12.5007 8.42509 12.4348 8.30781 12.3175C8.19054 12.2003 8.12465 12.0412 8.12465 11.8753C8.12465 11.7095 8.19054 11.5504 8.30781 11.4332L12.8664 6.87535H0.625C0.45924 6.87535 0.300269 6.8095 0.183058 6.69229C0.0658481 6.57508 0 6.41611 0 6.25035C0 6.08459 0.0658481 5.92562 0.183058 5.80841C0.300269 5.6912 0.45924 5.62535 0.625 5.62535H12.8664L8.30781 1.06753C8.19054 0.95026 8.12465 0.7912 8.12465 0.625347C8.12465 0.459495 8.19054 0.300435 8.30781 0.18316C8.42509 0.0658846 8.58415 0 8.75 0C8.91585 0 9.07491 0.0658846 9.19219 0.18316L14.8172 5.80816C14.8753 5.86621 14.9214 5.93514 14.9529 6.01101C14.9843 6.08688 15.0005 6.16821 15.0005 6.25035C15.0005 6.33248 14.9843 6.41381 14.9529 6.48969C14.9214 6.56556 14.8753 6.63449 14.8172 6.69254Z" fill="#060719"/>
+          </svg>
+          <span class="meta-text">Час прийняття рішення від 15 хвилин</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-block">
+      <div class="arrows">
+        <button class="btn-arrow" id="btn-prev" aria-label="Назад">
+          <svg width="8" height="14" viewBox="0 0 7.50084 13.7507" fill="none">
+            <path d="M7.31768 12.6832C7.37575 12.7412 7.42181 12.8102 7.45324 12.886C7.48466 12.9619 7.50084 13.0432 7.50084 13.1253C7.50084 13.2075 7.48466 13.2888 7.45324 13.3647C7.42181 13.4405 7.37575 13.5095 7.31768 13.5675C7.25961 13.6256 7.19067 13.6717 7.1148 13.7031C7.03893 13.7345 6.95761 13.7507 6.87549 13.7507C6.79337 13.7507 6.71205 13.7345 6.63618 13.7031C6.56031 13.6717 6.49137 13.6256 6.4333 13.5675L0.183304 7.31754C0.125194 7.25949 0.0790947 7.19056 0.047642 7.11469C0.0161893 7.03881 0 6.95748 0 6.87535C0 6.79321 0.0161893 6.71188 0.047642 6.63601C0.0790947 6.56014 0.125194 6.49121 0.183304 6.43316L6.4333 0.18316C6.55058 0.0658846 6.70964 -3.26935e-09 6.87549 0C7.04134 3.26935e-09 7.2004 0.0658846 7.31768 0.18316C7.43495 0.300435 7.50084 0.459495 7.50084 0.625347C7.50084 0.7912 7.43495 0.95026 7.31768 1.06753L1.50909 6.87535L7.31768 12.6832Z" fill="#0a2140"/>
+          </svg>
+        </button>
+        <button class="btn-arrow" id="btn-next" aria-label="Вперед">
+          <svg width="8" height="14" viewBox="0 0 7.50084 13.7507" fill="none">
+            <path d="M7.31754 7.31754L1.06754 13.5675C1.00947 13.6256 0.940528 13.6717 0.864658 13.7031C0.788787 13.7345 0.707469 13.7507 0.625347 13.7507C0.543226 13.7507 0.461908 13.7345 0.386037 13.7031C0.310167 13.6717 0.241229 13.6256 0.18316 13.5675C0.125091 13.5095 0.0790281 13.4405 0.0476015 13.3647C0.0161748 13.2888 0 13.2075 0 13.1253C0 13.0432 0.0161748 12.9619 0.0476015 12.886C0.0790281 12.8102 0.125091 12.7412 0.18316 12.6832L5.99175 6.87535L0.18316 1.06753C0.0658843 0.95026 -1.2357e-09 0.7912 0 0.625347C1.2357e-09 0.459495 0.0658843 0.300435 0.18316 0.18316C0.300435 0.0658846 0.459495 1.2357e-09 0.625347 0C0.7912 -1.2357e-09 0.95026 0.0658846 1.06754 0.18316L7.31754 6.43316C7.37565 6.49121 7.42175 6.56014 7.4532 6.63601C7.48465 6.71188 7.50084 6.79321 7.50084 6.87535C7.50084 6.95748 7.48465 7.03881 7.4532 7.11469C7.42175 7.19056 7.37565 7.25949 7.31754 7.31754Z" fill="#0a2140"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="cards" id="cards"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const AUTOPLAY_MS = 5000;
+
+const SLIDES = [
+  {
+    label: "Для розвитку бізнесу",
+    img: "src/imports/HeroSection/a38fa06c3d58d09912c01e76b83fd951c6daef6f.png",
+    heading: "Фінансування розвитку<br>та нових можливостей<br>вашого бізнесу",
+    sub: "Кредити та лізинг для бізнесу і приватних клієнтів — коли для наступного кроку потрібне фінансування.",
+    cta: "ОТРИМАТИ ФІНАНСУВАННЯ",
+  },
+  {
+    label: "На обігові кошти",
+    img: "src/imports/HeroSection/4c821c8afdccfdfbd2fd1b99ae7661ddb772e1d8.png",
+    heading: "Кошти для безперервної<br>роботи та розвитку вашого бізнесу",
+    sub: "Фінансування закупівлі товарів і сировини, сезонних потреб, виконання контрактів та поточної діяльності.",
+    cta: "ПОПОВНИТИ ОБІГОВІ КОШТИ",
+  },
+  {
+    label: "На авто та техніку",
+    img: "src/imports/HeroSection/9d4b3246cfab3162de3bf7419f7030d62cf95c42.png",
+    heading: "Придбайте авто<br>та техніку для розвитку вашого бізнесу",
+    sub: "Кредит або лізинг на легкові автомобілі, комерційний транспорт, сільськогосподарську та спеціальну техніку",
+    cta: "ПРИДБАТИ АВТО АБО ТЕХНІКУ",
+  },
+  {
+    label: "На обладнання та нерухомість",
+    img: "src/imports/HeroSection/a0fe41a0aacc4e1bbf993fab14d872d8eafae530.png",
+    heading: "Інвестуйте в обладнання<br>та нерухомість<br>для розвитку бізнесу",
+    sub: "Фінансування придбання обладнання, виробничих потужностей, офісної, торговельної та комерційної нерухомості.",
+    cta: "ОТРИМАТИ ФІНАНСУВАННЯ",
+  },
+  {
+    label: "Для особистих планів",
+    img: "src/imports/HeroSection/9c5dc4c91b065d9bc24b84ed9bf5f511c1c3585f.png",
+    heading: "Отримайте кошти<br>на важливі особисті<br>плани",
+    sub: "Кредити для приватних клієнтів під заставу нерухомості або автомобіля — на значні покупки, інвестиції та інші потреби.",
+    cta: "ОТРИМАТИ КОШТИ",
+  },
+];
+
+let active = 0;
+let rafId = null;
+let startTime = null;
+
+const titleEl    = document.getElementById("hero-title");
+const subEl      = document.getElementById("hero-subtitle");
+const ctaEl      = document.getElementById("cta-btn");
+const cardsEl    = document.getElementById("cards");
+const btnPrev    = document.getElementById("btn-prev");
+const btnNext    = document.getElementById("btn-next");
+
+// build cards
+SLIDES.forEach((s, i) => {
+  const card = document.createElement("button");
+  card.className = "card" + (i === 0 ? " active" : "");
+  card.dataset.index = i;
+  card.innerHTML = `
+    <div class="card-bg">
+      <img src="${s.img}" alt="${s.label}"/>
+      <div class="grad"></div>
+    </div>
+    <div class="card-inner">
+      <div class="card-label">${s.label}</div>
+      <div class="card-bar"><div class="card-bar-fill"></div></div>
+    </div>`;
+  card.addEventListener("click", () => goTo(i));
+  cardsEl.appendChild(card);
+});
+
+function render() {
+  const s = SLIDES[active];
+  titleEl.innerHTML  = s.heading;
+  subEl.textContent  = s.sub;
+  ctaEl.textContent  = s.cta;
+  document.querySelectorAll(".card").forEach((c, i) => {
+    c.classList.toggle("active", i === active);
+    c.querySelector(".card-bar-fill").style.width = "0%";
+  });
+}
+
+function goTo(index) {
+  active = (index + SLIDES.length) % SLIDES.length;
+  render();
+  startAutoplay();
+}
+
+function startAutoplay() {
+  if (rafId) cancelAnimationFrame(rafId);
+  startTime = performance.now();
+  const fill = document.querySelectorAll(".card")[active].querySelector(".card-bar-fill");
+
+  function tick(now) {
+    const p = Math.min((now - startTime) / AUTOPLAY_MS, 1);
+    fill.style.width = (p * 100) + "%";
+    if (p < 1) {
+      rafId = requestAnimationFrame(tick);
+    } else {
+      goTo(active + 1);
+    }
+  }
+  rafId = requestAnimationFrame(tick);
+}
+
+btnPrev.addEventListener("click", () => goTo(active - 1));
+btnNext.addEventListener("click", () => goTo(active + 1));
+
+render();
+startAutoplay();
+</script>
+</body>
+</html>

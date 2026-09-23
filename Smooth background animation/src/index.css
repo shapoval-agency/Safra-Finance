@@ -1,0 +1,151 @@
+@import 'tailwindcss';
+
+.animated-bg {
+  background: #edeaf6;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, #fddcc8 0%, #f9c8b0 60%, transparent 100%);
+  top: -20%;
+  right: -15%;
+  filter: blur(60px);
+  animation: drift1 12s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 75vw;
+  height: 75vw;
+  background: radial-gradient(circle, #c8d0f0 0%, #b8c4ee 60%, transparent 100%);
+  bottom: -20%;
+  left: -15%;
+  filter: blur(60px);
+  animation: drift2 14s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 65vw;
+  height: 65vw;
+  background: radial-gradient(circle, #ddd4f4 0%, #c8bcee 60%, transparent 100%);
+  top: 20%;
+  left: 10%;
+  filter: blur(70px);
+  animation: drift3 16s ease-in-out infinite;
+}
+
+.blob-4 {
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, #fce8d4 0%, #f8d4bc 60%, transparent 100%);
+  bottom: 5%;
+  right: 10%;
+  filter: blur(50px);
+  animation: drift4 10s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-20%, 25%) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes drift2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(18%, -22%) scale(1.12); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes drift3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(22%, -18%) scale(1.1); }
+  66%  { transform: translate(-15%, 20%) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes drift4 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-22%, -20%) scale(1.18); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Wave */
+.wave {
+  position: absolute;
+  left: -5%;
+  width: 110%;
+  height: 70%;
+  will-change: transform;
+}
+
+.wave-top {
+  top: -10%;
+  animation: wave-float-top 14s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+.wave-bottom {
+  bottom: -10%;
+  animation: wave-float-bottom 18s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.wave-mid {
+  top: 15%;
+  animation: wave-float-mid 20s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes wave-float-top {
+  0%   { transform: translateY(0) scaleX(1); }
+  50%  { transform: translateY(12%) scaleX(1.05); }
+  100% { transform: translateY(0) scaleX(1); }
+}
+
+@keyframes wave-float-bottom {
+  0%   { transform: translateY(0) scaleX(1); }
+  50%  { transform: translateY(-14%) scaleX(1.04); }
+  100% { transform: translateY(0) scaleX(1); }
+}
+
+@keyframes wave-float-mid {
+  0%   { transform: translateY(0) translateX(0); }
+  33%  { transform: translateY(8%) translateX(3%); }
+  66%  { transform: translateY(-8%) translateX(-3%); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+.wave-path-a {
+  animation: morph-a 14s ease-in-out infinite;
+}
+.wave-path-b {
+  animation: morph-b 18s ease-in-out infinite;
+}
+.wave-path-c {
+  animation: morph-c 20s ease-in-out infinite;
+}
+
+@keyframes morph-a {
+  0%   { d: path("M0,60 C200,160 500,0   720,80 C940,160 1200,20 1440,80 L1440,320 L0,320 Z"); }
+  50%  { d: path("M0,100 C180,0   520,180 720,60 C920,-20 1220,160 1440,40 L1440,320 L0,320 Z"); }
+  100% { d: path("M0,60 C200,160 500,0   720,80 C940,160 1200,20 1440,80 L1440,320 L0,320 Z"); }
+}
+
+@keyframes morph-b {
+  0%   { d: path("M0,60 C300,0   600,160 900,60 C1100,0   1300,120 1440,60 L1440,320 L0,320 Z"); }
+  50%  { d: path("M0,20 C350,140 580,0   860,100 C1060,180 1260,40 1440,100 L1440,320 L0,320 Z"); }
+  100% { d: path("M0,60 C300,0   600,160 900,60 C1100,0   1300,120 1440,60 L1440,320 L0,320 Z"); }
+}
+
+@keyframes morph-c {
+  0%   { d: path("M0,80 C250,20 550,160 780,60 C1000,0 1240,140 1440,80 L1440,320 L0,320 Z"); }
+  33%  { d: path("M0,40 C300,160 520,20 760,120 C980,200 1200,60 1440,120 L1440,320 L0,320 Z"); }
+  66%  { d: path("M0,120 C220,40 500,180 720,80 C940,0 1180,160 1440,60 L1440,320 L0,320 Z"); }
+  100% { d: path("M0,80 C250,20 550,160 780,60 C1000,0 1240,140 1440,80 L1440,320 L0,320 Z"); }
+}
