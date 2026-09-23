@@ -761,10 +761,16 @@
               <h2>Фінансуємо розвиток українського бізнесу</h2>
 
               <div class="about__content-left-content-text">
-                <p>SAFRA FINANCE® — українська фінансова компанія, що надає послуги кредитування та фінансового лізингу для бізнесу і приватних клієнтів.</p>
-                <p>Допомагаємо фінансувати обігові кошти, придбання автомобілів, техніки, обладнання та нерухомості, а також інші потреби для розвитку бізнесу.</p>
-                <p>Ми прагнемо зрозуміти завдання клієнта та запропонувати фінансове рішення, що відповідає його потребам і можливостям. Швидко розглядаємо заявки, зрозуміло пояснюємо умови та супроводжуємо клієнта на всіх етапах фінансування.</p>
-                <p>Працюємо з фізичними особами, ФОП та юридичними особами по всіх секторах економіки на всій території України. Паперову роботу беремо на себе, а ви зосереджуєтеся на головному: своєму бізнесі та реалізації особистих планів.</p>
+                <p>SAFRA FINANCE® — українська фінансова компанія, що надає послуги кредитування та фінансового лізингу
+                  для бізнесу і приватних клієнтів.</p>
+                <p>Допомагаємо фінансувати обігові кошти, придбання автомобілів, техніки, обладнання та нерухомості, а
+                  також інші потреби для розвитку бізнесу.</p>
+                <p>Ми прагнемо зрозуміти завдання клієнта та запропонувати фінансове рішення, що відповідає його
+                  потребам і можливостям. Швидко розглядаємо заявки, зрозуміло пояснюємо умови та супроводжуємо клієнта
+                  на всіх етапах фінансування.</p>
+                <p>Працюємо з фізичними особами, ФОП та юридичними особами по всіх секторах економіки на всій території
+                  України. Паперову роботу беремо на себе, а ви зосереджуєтеся на головному: своєму бізнесі та
+                  реалізації особистих планів.</p>
               </div>
 
               <a class="about__content-left-content-link btn btn--blue" href="#apply">БІЛЬШЕ ПРО НАС
@@ -1585,7 +1591,7 @@
             <h2 class="cities__title" id="cities-title">Кредитні програми у вашому місті</h2>
             <p class="cities__text">
               Оберіть зручний напрям — ми підготували
-найпопулярніші програми за сумою та у вашому регіоні.
+              найпопулярніші програми за сумою та у вашому регіоні.
             </p>
           </div>
         </div>
@@ -1900,14 +1906,7 @@
 
   <footer class="footer">
     <div class="footer__bg" aria-hidden="true">
-      <img
-        class="footer__bg-img"
-        src="assets/img/footer-bg.png"
-        width="1560"
-        height="1018"
-        alt=""
-        decoding="async"
-      >
+      <img class="footer__bg-img" src="assets/img/footer-bg.png" width="1560" height="1018" alt="" decoding="async">
     </div>
     <div class="wrapper">
       <div class="footer__top">
@@ -2226,7 +2225,8 @@
       </button>
 
       <div class="popup__success">
-        <img class="popup__success-icon" src="assets/img/popup-check.svg" width="64" height="64" alt="" decoding="async">
+        <img class="popup__success-icon" src="assets/img/popup-check.svg" width="64" height="64" alt=""
+          decoding="async">
         <h2 class="popup__title" id="popup-success-title">Дякуємо за вашу заявку!</h2>
         <p class="popup__text">
           Ми отримали ваші дані. Менеджер Safra Finance зв’яжеться з вами найближчим часом.
@@ -2246,6 +2246,220 @@
         </button>
       </div>
     </div>
+  </dialog>
+
+  <dialog class="stepper" id="popup-stepper" aria-labelledby="stepper-live-title">
+    <form class="stepper__form" id="stepper-form" novalidate>
+      <div class="stepper__header">
+        <div class="stepper__header-box">
+          <a class="stepper__logo" href="/" aria-label="Safra Finance — на головну">
+            <img src="assets/img/logo-stepper.svg" width="185" height="27" alt="Safra Finance" decoding="async">
+          </a>
+          <span class="stepper__header-text">ЛІЗІНГ</span>
+        </div>
+        <button class="stepper__close" type="button" data-popup-close aria-label="Закрити форму заявки">
+          <img src="assets/img/popup-close.svg" width="14" height="14" alt="" decoding="async">
+        </button>
+      </div>
+
+      <ol class="stepper__progress" aria-label="Етапи оформлення заявки">
+        <li class="stepper__progress-item is-active" data-stepper-progress="1" aria-current="step">
+          <span class="stepper__progress-marker" aria-hidden="true">
+            <span class="stepper__progress-num">01</span>
+            <span class="stepper__progress-check">
+              <img src="assets/img/popup-check.svg" width="16" height="16" alt="" decoding="async">
+            </span>
+          </span>
+          <span class="stepper__progress-label">Предмет</span>
+        </li>
+        <li class="stepper__progress-item" data-stepper-progress="2">
+          <span class="stepper__progress-marker" aria-hidden="true">
+            <span class="stepper__progress-num">02</span>
+            <span class="stepper__progress-check">
+              <img src="assets/img/popup-check.svg" width="16" height="16" alt="" decoding="async">
+            </span>
+          </span>
+          <span class="stepper__progress-label">Умови</span>
+        </li>
+        <li class="stepper__progress-item" data-stepper-progress="3">
+          <span class="stepper__progress-marker" aria-hidden="true">
+            <span class="stepper__progress-num">03</span>
+            <span class="stepper__progress-check">
+              <img src="assets/img/popup-check.svg" width="16" height="16" alt="" decoding="async">
+            </span>
+          </span>
+          <span class="stepper__progress-label">Заявка</span>
+        </li>
+      </ol>
+
+      <p class="visually-hidden" id="stepper-live-title" aria-live="polite">Крок 1 з 3: вибір продукту</p>
+
+      <div class="stepper__panels">
+        <section class="stepper__panel is-active" data-stepper-panel="1" aria-labelledby="stepper-title-1">
+          <div class="stepper__panel-header">
+            <h2 class="stepper__title" id="stepper-title-1">Що плануєте придбати?</h2>
+            <p class="stepper__text">Оберіть предмет лізингу, щоб перейти до умов фінансування.</p>
+          </div>
+
+          <fieldset class="stepper__options">
+            <legend class="visually-hidden">Оберіть предмет лізингу</legend>
+
+            <label class="stepper__option">
+              <input class="stepper__option-input visually-hidden" type="radio" name="product" value="passenger-cars"
+                required>
+              <span class="stepper__radio" aria-hidden="true"></span>
+              <span class="stepper__option-text">Легкові автомобілі</span>
+            </label>
+
+            <label class="stepper__option">
+              <input class="stepper__option-input visually-hidden" type="radio" name="product" value="commercial">
+              <span class="stepper__radio" aria-hidden="true"></span>
+              <span class="stepper__option-text">Комерційний транспорт</span>
+            </label>
+
+            <label class="stepper__option">
+              <input class="stepper__option-input visually-hidden" type="radio" name="product" value="cargo">
+              <span class="stepper__radio" aria-hidden="true"></span>
+              <span class="stepper__option-text">Вантажний транспорт</span>
+            </label>
+
+            <label class="stepper__option">
+              <input class="stepper__option-input visually-hidden" type="radio" name="product" value="agro">
+              <span class="stepper__radio" aria-hidden="true"></span>
+              <span class="stepper__option-text">Сільгосптехніка</span>
+            </label>
+
+            <label class="stepper__option">
+              <input class="stepper__option-input visually-hidden" type="radio" name="product" value="special">
+              <span class="stepper__radio" aria-hidden="true"></span>
+              <span class="stepper__option-text">Спецтехніка</span>
+            </label>
+
+            <label class="stepper__option">
+              <input class="stepper__option-input visually-hidden" type="radio" name="product" value="equipment">
+              <span class="stepper__radio" aria-hidden="true"></span>
+              <span class="stepper__option-text">Обладнання</span>
+            </label>
+          </fieldset>
+        </section>
+
+        <section class="stepper__panel" data-stepper-panel="2" aria-labelledby="stepper-title-2" hidden>
+          <div class="stepper__panel-header">
+            <h2 class="stepper__title" id="stepper-title-2">Які умови вам підходять?</h2>
+            <p class="stepper__text">
+              Вкажіть бажані параметри — ми підготуємо індивідуальну пропозицію.
+            </p>
+          </div>
+
+          <div class="stepper__options2">
+            <div class="stepper__options-left">
+              <h3 class="stepper__options-left-title">Обраний предмет:</h3>
+              <div class="stepper__options-left-choice">
+                <span class="stepper__radio stepper__radio--checked" aria-hidden="true"></span>
+                <p class="stepper__options-left-text" data-stepper-summary-product></p>
+              </div>
+            </div>
+            <button class="stepper__options-right-button" type="button" data-stepper-goto="1">Змінити</button>
+          </div>
+
+          <div class="stepper__fields">
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-price">Вартість предмета лізингу</label>
+              <input class="stepper__input" id="stepper-price" type="text" name="price" autocomplete="off"
+                placeholder="напр. 2 500 000 грн" required>
+            </div>
+
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-down-payment">Перший внесок %</label>
+              <input class="stepper__input" id="stepper-down-payment" type="text" name="down_payment" autocomplete="off"
+                placeholder="напр. 20%" required>
+            </div>
+
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-lease-term">Строк лізингу</label>
+              <select class="stepper__input" name="lease_term" id="stepper-lease-term" required>
+                <option value="" disabled selected>Оберіть строк</option>
+                <option value="1">1 рік</option>
+                <option value="2">2 роки</option>
+                <option value="3">3 роки</option>
+                <option value="4">4 роки</option>
+                <option value="5">5 років і більше</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <section class="stepper__panel" data-stepper-panel="3" aria-labelledby="stepper-title-3" hidden>
+          <div class="stepper__panel-header">
+            <h2 class="stepper__title" id="stepper-title-3">Отримайте пропозицію</h2>
+            <p class="stepper__text">
+              Залиште контакти — ми зв’яжемося з вами, щоб уточнити деталі та запропонувати умови лізингу.
+            </p>
+          </div>
+
+          <div class="stepper__options2">
+            <div class="stepper__options-left">
+              <h3 class="stepper__options-left-title">Підсумок вибору:</h3>
+              <div class="stepper__options-left-choice">
+                <span class="stepper__radio stepper__radio--checked" aria-hidden="true"></span>
+                <div class="stepper__options-left-copy">
+                  <p class="stepper__options-left-text" data-stepper-summary-product></p>
+                  <p class="stepper__options-left-text-price" data-stepper-summary-terms></p>
+                </div>
+              </div>
+            </div>
+            <button class="stepper__options-right-button" type="button" data-stepper-goto="1">Змінити</button>
+          </div>
+
+          <div class="stepper__fields">
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-name">Ваше ім’я *</label>
+              <input class="stepper__input" id="stepper-name" type="text" name="first_name" autocomplete="given-name"
+                placeholder="Введіть ваше ім’я" required>
+            </div>
+
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-contact-phone">Телефон *</label>
+              <input class="stepper__input" id="stepper-contact-phone" type="tel" name="phone" autocomplete="tel"
+                placeholder="+38 (0XX) XXX XX XX" required>
+            </div>
+
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-email">Email</label>
+              <input class="stepper__input" id="stepper-email" type="email" name="email" autocomplete="email"
+                placeholder="example@email.com" required>
+            </div>
+
+            <div class="stepper__field">
+              <label class="stepper__label" for="stepper-note">Примітка</label>
+              <input class="stepper__input" id="stepper-note" type="text" name="note" autocomplete="off"
+                placeholder="Побажання">
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="stepper__footer">
+        <button class="stepper__btn stepper__btn--back btn btn--transparent" type="button" data-stepper-back hidden>
+          <img src="assets/img/stepper-back.svg" width="20" height="20" alt="" decoding="async">
+          <span>НАЗАД</span>
+        </button>
+        <button class="stepper__btn stepper__btn--next btn btn--orange" type="button" data-stepper-next>
+          <span data-stepper-next-label>ДАЛІ</span>
+          <img src="assets/img/stepper-next.svg" width="16" height="16" alt="" decoding="async">
+        </button>
+        <button class="stepper__btn stepper__btn--submit btn btn--orange" type="submit" data-stepper-submit hidden>
+          НАДІСЛАТИ ЗАЯВКУ
+        </button>
+      </div>
+
+      <div class="stepper__check" data-stepper-consent hidden>
+        <span class="stepper__check-text">
+          <img class="stepper__check-icon" src="assets/img/check.svg" width="15" height="17" alt="" decoding="async">
+          Ваші дані захищені та не передаються третім особам. Натискаючи «Надіслати заявку», ви погоджуєтеся з Політикою конфіденційності.
+        </span>
+      </div>
+    </form>
   </dialog>
 
   <script src="js/vendor/lenis.min.js"></script>

@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq();
   initFooterAccordion();
   initPopups();
+  initStepper();
   initGsap();
 });
 
@@ -548,9 +549,14 @@ function initFooterAccordion() {
 function initPopups() {
   const applyPopup = document.querySelector("#popup-apply");
   const successPopup = document.querySelector("#popup-success");
+  const stepperPopup = document.querySelector("#popup-stepper");
   const form = document.querySelector("#popup-apply-form");
   const ctaForm = document.querySelector("#cta-form");
   if (!successPopup) return;
+
+  function anyPopupOpen() {
+    return Boolean(applyPopup?.open || successPopup.open || stepperPopup?.open);
+  }
 
   function lockScroll() {
     document.body.classList.add("is-popup-open");
@@ -559,13 +565,14 @@ function initPopups() {
   }
 
   function unlockScroll() {
-    if (applyPopup?.open || successPopup.open) return;
+    if (anyPopupOpen()) return;
     document.body.classList.remove("is-popup-open");
     document.documentElement.classList.remove("is-popup-open");
     window.lenis?.start();
   }
 
   function openPopup(popup) {
+    if (!popup) return;
     if (typeof popup.showModal === "function") popup.showModal();
     else popup.setAttribute("open", "");
     lockScroll();
@@ -579,15 +586,19 @@ function initPopups() {
   }
 
   function openApply() {
-    if (!applyPopup) return;
     closePopup(successPopup);
-    openPopup(applyPopup);
+    closePopup(applyPopup);
+    if (stepperPopup) openPopup(stepperPopup);
+    else openPopup(applyPopup);
   }
 
   function openSuccess() {
-    if (applyPopup) closePopup(applyPopup);
+    closePopup(applyPopup);
+    closePopup(stepperPopup);
     openPopup(successPopup);
   }
+
+  window.safraPopups = { openPopup, closePopup, openApply, openSuccess, unlockScroll };
 
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest('a[href="#apply"], [data-popup="apply"]');
@@ -599,12 +610,12 @@ function initPopups() {
 
     const closer = event.target.closest("[data-popup-close]");
     if (closer) {
-      const popup = closer.closest("dialog.popup");
+      const popup = closer.closest("dialog.popup, dialog.stepper");
       if (popup) closePopup(popup);
     }
   });
 
-  [applyPopup, successPopup].filter(Boolean).forEach((popup) => {
+  [applyPopup, successPopup, stepperPopup].filter(Boolean).forEach((popup) => {
     popup.addEventListener("click", (event) => {
       if (event.target === popup) closePopup(popup);
     });
@@ -633,6 +644,215 @@ function initPopups() {
     openSuccess();
     ctaForm.reset();
   });
+}
+
+function initStepper() {
+  const root = document.querySelector("#popup-stepper");
+  const form = document.querySelector("#stepper-form");
+  if (!root || !form) return;
+
+  const panels = [...form.querySelectorAll("[data-stepper-panel]")];
+  const progressItems = [...form.querySelectorAll("[data-stepper-progress]")];
+  const backBtn = form.querySelector("[data-stepper-back]");
+  const nextBtn = form.querySelector("[data-stepper-next]");
+  const nextLabel = form.querySelector("[data-stepper-next-label]");
+  const submitBtn = form.querySelector("[data-stepper-submit]");
+  const liveTitle = root.querySelector("#stepper-live-title");
+  const headerText = form.querySelector(".stepper__header-text");
+  const consentBlock = form.querySelector("[data-stepper-consent]");
+  const consentInput = consentBlock?.querySelector(".stepper__check-input");
+  const productSummaryNodes = [...form.querySelectorAll("[data-stepper-summary-product]")];
+  const termsSummary = form.querySelector("[data-stepper-summary-terms]");
+  const total = panels.length;
+  let step = 1;
+
+  const stepTitles = {
+    1: "вибір предмета",
+    2: "умови лізингу",
+    3: "заявка",
+  };
+
+  const nextLabels = {
+    1: "ДАЛІ",
+    2: "ПЕРЕЙТИ ДО ЗАЯВКИ",
+  };
+
+  function getPanel(index) {
+    return form.querySelector(`[data-stepper-panel="${index}"]`);
+  }
+
+  function getPanelFields(panel) {
+    return [...panel.querySelectorAll("input, select, textarea")].filter(
+      (field) => !field.disabled && field.type !== "hidden"
+    );
+  }
+
+  function getStepFields(index) {
+    const panel = getPanel(index);
+    const fields = panel ? getPanelFields(panel) : [];
+    if (index === total && consentInput) fields.push(consentInput);
+    return fields;
+  }
+
+  function validateStep(index) {
+    const fields = getStepFields(index);
+    for (const field of fields) {
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        field.focus();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function getSelectedProductLabel() {
+    const selected = form.querySelector(".stepper__option-input:checked");
+    if (!selected) return "";
+    return (
+      selected.closest(".stepper__option")?.querySelector(".stepper__option-text")?.textContent?.trim() || ""
+    );
+  }
+
+  function syncOptions() {
+    form.querySelectorAll(".stepper__option").forEach((option) => {
+      const input = option.querySelector(".stepper__option-input");
+      option.classList.toggle("is-selected", Boolean(input?.checked));
+    });
+  }
+
+  function syncSummary() {
+    const productLabel = getSelectedProductLabel();
+    const price = form.querySelector("#stepper-price")?.value.trim() || "";
+    const downPayment = form.querySelector("#stepper-down-payment")?.value.trim() || "";
+    const termSelect = form.querySelector("#stepper-lease-term");
+    const termLabel = termSelect?.selectedOptions?.[0]?.textContent?.trim() || "";
+    const hasTerm = Boolean(termSelect?.value);
+
+    productSummaryNodes.forEach((node) => {
+      node.textContent = productLabel || "—";
+    });
+
+    if (termsSummary) {
+      const parts = [];
+      if (price) parts.push(price);
+      if (downPayment) parts.push(`внесок ${downPayment}`);
+      if (hasTerm && termLabel) parts.push(termLabel);
+      termsSummary.textContent = parts.length ? parts.join(" · ") : "—";
+    }
+
+    if (headerText) {
+      headerText.textContent = productLabel ? productLabel.toUpperCase() : "ЛІЗІНГ";
+    }
+  }
+
+  function updateUI() {
+    panels.forEach((panel) => {
+      const index = Number(panel.dataset.stepperPanel);
+      const active = index === step;
+      panel.classList.toggle("is-active", active);
+      panel.hidden = !active;
+    });
+
+    progressItems.forEach((item) => {
+      const index = Number(item.dataset.stepperProgress);
+      item.classList.toggle("is-active", index === step);
+      item.classList.toggle("is-done", index < step);
+      if (index === step) item.setAttribute("aria-current", "step");
+      else item.removeAttribute("aria-current");
+    });
+
+    if (backBtn) backBtn.hidden = step <= 1;
+    if (nextBtn) nextBtn.hidden = step >= total;
+    if (submitBtn) submitBtn.hidden = step < total;
+    if (consentBlock) consentBlock.hidden = step !== total;
+    if (nextLabel && nextLabels[step]) nextLabel.textContent = nextLabels[step];
+
+    if (liveTitle) {
+      liveTitle.textContent = `Крок ${step} з ${total}: ${stepTitles[step] || ""}`;
+    }
+
+    syncOptions();
+    syncSummary();
+  }
+
+  function goTo(nextStep) {
+    step = Math.min(Math.max(nextStep, 1), total);
+    updateUI();
+    const panel = getPanel(step);
+    const title = panel?.querySelector(".stepper__title");
+    if (title) title.focus();
+    else panel?.querySelector("input, select, button, a")?.focus();
+  }
+
+  nextBtn?.addEventListener("click", () => {
+    if (!validateStep(step)) return;
+    goTo(step + 1);
+  });
+
+  backBtn?.addEventListener("click", () => {
+    goTo(step - 1);
+  });
+
+  form.addEventListener("click", (event) => {
+    const editBtn = event.target.closest("[data-stepper-goto]");
+    if (!editBtn || !form.contains(editBtn)) return;
+    const targetStep = Number(editBtn.dataset.stepperGoto);
+    if (!Number.isFinite(targetStep)) return;
+    goTo(targetStep);
+  });
+
+  form.addEventListener("change", (event) => {
+    if (
+      event.target.matches(
+        ".stepper__option-input, #stepper-price, #stepper-down-payment, #stepper-lease-term"
+      )
+    ) {
+      syncOptions();
+      syncSummary();
+    }
+  });
+
+  form.addEventListener("input", (event) => {
+    if (event.target.matches("#stepper-price, #stepper-down-payment")) {
+      syncSummary();
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    for (let index = 1; index <= total; index += 1) {
+      const invalid = getStepFields(index).find((field) => !field.checkValidity());
+      if (invalid) {
+        goTo(index);
+        window.requestAnimationFrame(() => {
+          invalid.reportValidity();
+          invalid.focus();
+        });
+        return;
+      }
+    }
+
+    window.safraPopups?.openSuccess?.();
+    form.reset();
+    syncOptions();
+    syncSummary();
+    goTo(1);
+  });
+
+  root.addEventListener("close", () => {
+    form.reset();
+    syncOptions();
+    syncSummary();
+    goTo(1);
+  });
+
+  form.querySelectorAll(".stepper__title").forEach((title) => {
+    title.setAttribute("tabindex", "-1");
+  });
+
+  updateUI();
 }
 
 function initGsap() {
