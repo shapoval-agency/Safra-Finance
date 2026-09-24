@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCitiesBoxSwiper();
   initReviews();
   initFaq();
+  initBlogTabs();
   initFooterAccordion();
   initPopups();
   initStepper();
@@ -497,6 +498,44 @@ function initFaq() {
       tabs.forEach((item) => {
         item.classList.toggle("is-active", item === tab);
       });
+      syncList();
+    });
+  });
+
+  syncList();
+}
+
+function initBlogTabs() {
+  const root = document.querySelector(".blog-page__content");
+  if (!root) return;
+
+  const tabs = [...root.querySelectorAll("[data-blog-tab]")];
+  const list = root.querySelector(".blog-page__content-list");
+  const title = root.querySelector(".blog-page__content-title h3");
+  if (!tabs.length || !list) return;
+
+  const items = [...list.querySelectorAll(".blog-page__content-item")];
+  let activeCategory = "all";
+
+  function syncList() {
+    items.forEach((item) => {
+      const match =
+        activeCategory === "all" || item.dataset.blogCategory === activeCategory;
+      item.hidden = !match;
+    });
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      activeCategory = tab.dataset.blogTab || "all";
+
+      tabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+
+      if (title) title.textContent = tab.textContent.trim();
       syncList();
     });
   });
