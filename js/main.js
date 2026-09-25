@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCasesSwiper();
   initCitiesSwiper();
   initCitiesBoxSwiper();
+  initPressReleasesSwiper();
   initReviews();
   initFaq();
   initBlogTabs();
@@ -341,6 +342,37 @@ function initCitiesBoxSwiper() {
   } else {
     mq.addListener(sync);
   }
+}
+
+function initPressReleasesSwiper() {
+  if (typeof Swiper === "undefined") return;
+
+  const root = document.querySelector(".press-releases");
+  if (!root) return;
+
+  const el = root.querySelector(".press-releases__body");
+  const prevEl = root.querySelector(".press-releases__nav-prev");
+  const nextEl = root.querySelector(".press-releases__nav-next");
+  if (!el) return;
+
+  new Swiper(el, {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    speed: 450,
+    grabCursor: true,
+    watchOverflow: true,
+    resistanceRatio: 0.65,
+    touchStartPreventDefault: false,
+    navigation: {
+      prevEl,
+      nextEl,
+    },
+    breakpoints: {
+      1280: {
+        spaceBetween: 24,
+      },
+    },
+  });
 }
 
 function initReviews() {
