@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq();
   initBlogTabs();
   initFooterAccordion();
+  initDisclosureAccordion();
+  initDisclosureAnchors();
   initPopups();
   initStepper();
   initGsap();
@@ -583,6 +585,141 @@ function initFooterAccordion() {
     if (!item) return;
     toggleItem(item);
   });
+}
+
+function initDisclosureAccordion() {
+  const root = document.querySelector(".disclosure-of-information__content");
+  if (!root) return;
+
+  const items = [
+    ...root.querySelectorAll(
+      ".disclosure-of-information__content-item-accardion-item",
+    ),
+  ];
+  if (!items.length) return;
+
+  function closeItem(item) {
+    const button = item.querySelector(
+      ".disclosure-of-information__content-item-accardion-button",
+    );
+    const panel = item.querySelector(
+      ".disclosure-of-information__content-item-accardion-panel",
+    );
+    item.classList.remove("is-open");
+    if (button) button.setAttribute("aria-expanded", "false");
+    if (panel) panel.hidden = true;
+  }
+
+  function openItem(item) {
+    const button = item.querySelector(
+      ".disclosure-of-information__content-item-accardion-button",
+    );
+    const panel = item.querySelector(
+      ".disclosure-of-information__content-item-accardion-panel",
+    );
+    item.classList.add("is-open");
+    if (button) button.setAttribute("aria-expanded", "true");
+    if (panel) panel.hidden = false;
+  }
+
+  function toggleItem(item) {
+    if (item.classList.contains("is-open")) closeItem(item);
+    else openItem(item);
+  }
+
+  root.addEventListener("click", (event) => {
+    const button = event.target.closest(
+      ".disclosure-of-information__content-item-accardion-button",
+    );
+    if (!button || !root.contains(button)) return;
+
+    const item = button.closest(
+      ".disclosure-of-information__content-item-accardion-item",
+    );
+    if (!item) return;
+    toggleItem(item);
+  });
+}
+
+function initDisclosureAnchors() {
+  const root = document.querySelector(".disclosure-of-information");
+  if (!root) return;
+
+  const links = [
+    ...root.querySelectorAll(
+      ".disclosure-of-information__aside-item-link-text[href^='#']",
+    ),
+  ];
+  if (!links.length) return;
+
+  const sections = links
+    .map((link) => {
+      const id = link.getAttribute("href")?.slice(1);
+      const section = id ? document.getElementById(id) : null;
+      return section ? { link, section } : null;
+    })
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  function setActive(activeLink) {
+    links.forEach((link) => {
+      link.classList.toggle("is-active", link === activeLink);
+    });
+  }
+
+  function scrollToSection(section) {
+    const header = document.querySelector(".header");
+    const offset = (header?.offsetHeight || 0) + 16;
+
+    if (window.lenis?.scrollTo) {
+      window.lenis.scrollTo(section, { offset: -offset });
+      return;
+    }
+
+    const top =
+      section.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const id = link.getAttribute("href")?.slice(1);
+      const section = id ? document.getElementById(id) : null;
+      if (!section) return;
+
+      event.preventDefault();
+      setActive(link);
+      scrollToSection(section);
+      history.replaceState(null, "", `#${id}`);
+    });
+  });
+
+  function syncFromScroll() {
+    const header = document.querySelector(".header");
+    const offset = (header?.offsetHeight || 0) + 24;
+    let current = sections[0];
+
+    for (const entry of sections) {
+      const top = entry.section.getBoundingClientRect().top;
+      if (top - offset <= 0) current = entry;
+    }
+
+    if (current) setActive(current.link);
+  }
+
+  window.addEventListener("scroll", syncFromScroll, { passive: true });
+  window.lenis?.on?.("scroll", syncFromScroll);
+  syncFromScroll();
+
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const match = sections.find((entry) => entry.section.id === hash);
+    if (match) {
+      setActive(match.link);
+      requestAnimationFrame(() => scrollToSection(match.section));
+    }
+  }
 }
 
 function initPopups() {
