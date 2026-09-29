@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initCitiesSwiper();
   initCitiesBoxSwiper();
   initPressReleasesSwiper();
+  initWhatKnowSwiper();
+  initOtherServicesSwiper();
   initReviews();
   initFaq();
   initBlogTabs();
@@ -353,6 +355,68 @@ function initPressReleasesSwiper() {
   const el = root.querySelector(".press-releases__body");
   const prevEl = root.querySelector(".press-releases__nav-prev");
   const nextEl = root.querySelector(".press-releases__nav-next");
+  if (!el) return;
+
+  new Swiper(el, {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    speed: 450,
+    grabCursor: true,
+    watchOverflow: true,
+    resistanceRatio: 0.65,
+    touchStartPreventDefault: false,
+    navigation: {
+      prevEl,
+      nextEl,
+    },
+    breakpoints: {
+      1280: {
+        spaceBetween: 24,
+      },
+    },
+  });
+}
+
+function initWhatKnowSwiper() {
+  if (typeof Swiper === "undefined") return;
+
+  const root = document.querySelector(".what-know");
+  if (!root) return;
+
+  const el = root.querySelector(".what-know__swiper");
+  const prevEl = root.querySelector(".what-know__nav-prev");
+  const nextEl = root.querySelector(".what-know__nav-next");
+  if (!el) return;
+
+  new Swiper(el, {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    speed: 450,
+    grabCursor: true,
+    watchOverflow: true,
+    resistanceRatio: 0.65,
+    touchStartPreventDefault: false,
+    navigation: {
+      prevEl,
+      nextEl,
+    },
+    breakpoints: {
+      1280: {
+        spaceBetween: 24,
+      },
+    },
+  });
+}
+
+function initOtherServicesSwiper() {
+  if (typeof Swiper === "undefined") return;
+
+  const root = document.querySelector(".other-services");
+  if (!root) return;
+
+  const el = root.querySelector(".other-services__swiper");
+  const prevEl = root.querySelector(".other-services__nav-prev");
+  const nextEl = root.querySelector(".other-services__nav-next");
   if (!el) return;
 
   new Swiper(el, {

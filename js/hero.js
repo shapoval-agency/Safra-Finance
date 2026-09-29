@@ -1,8 +1,10 @@
 function initHero() {
+  document.querySelectorAll(".hero").forEach((root) => {
+    initHeroVideo(root);
+  });
+
   const root = document.querySelector("[data-hero]");
   if (!root) return;
-
-  initHeroVideo(root);
 
   if (typeof Swiper === "undefined") return;
 
