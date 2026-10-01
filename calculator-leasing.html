@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safra Finance — Калькулятор лізингу</title>
+    <meta name="description" content="Safra Finance — звітність, фінансові програми та співпраця для партнерів." />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/vendor/lenis.css" />
+    <link rel="stylesheet" href="css/vendor/aos.css" />
+    <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/vendor/fancybox.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__inner wrapper">
+            <a class="header__logo logo" href="/" aria-label="Safra Finance — на головну">
+                <img class="logo__icon--desktop" src="assets/img/logo.svg" width="185" height="27" alt=""
+                    decoding="async" />
+                <img class="logo__icon--mobile" src="assets/img/logo-mob.svg" width="88" height="64" alt=""
+                    decoding="async" />
+            </a>
+
+            <nav class="header__nav nav" aria-label="Головна навігація">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a class="nav__link" href="#zvitnist">Звітність</a>
+                    </li>
+
+                    <li class="nav__item nav__item--dropdown">
+                        <button class="nav__btn" type="button" aria-expanded="false" aria-controls="submenu-programs"
+                            data-dropdown-trigger>
+                            <span class="nav__btn-text">Програми</span>
+                            <img src="assets/img/arrow.svg" width="12" height="12" alt="" decoding="async">
+                        </button>
+                        <ul class="nav__submenu" id="submenu-programs" data-dropdown-menu hidden>
+                            <li class="nav__submenu-item">
+                                <a class="nav__submenu-link" href="#program-1">Програма 1</a>
+                            </li>
+                            <li class="nav__submenu-item">
+                                <a class="nav__submenu-link" href="#program-2">Програма 2</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav__item nav__item--dropdown">
+                        <button class="nav__btn" type="button" aria-expanded="false" aria-controls="submenu-partners"
+                            data-dropdown-trigger>
+                            <span class="nav__btn-text">Партнерам</span>
+                            <img src="assets/img/arrow.svg" width="12" height="12" alt="" decoding="async">
+                        </button>
+                        <ul class="nav__submenu" id="submenu-partners" data-dropdown-menu hidden>
+                            <li class="nav__submenu-item">
+                                <a class="nav__submenu-link" href="#partners-1">Умови співпраці</a>
+                            </li>
+                            <li class="nav__submenu-item">
+                                <a class="nav__submenu-link" href="#partners-2">Стати партнером</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav__item nav__item--dropdown">
+                        <button class="nav__btn" type="button" aria-expanded="false" aria-controls="submenu-about"
+                            data-dropdown-trigger>
+                            <span class="nav__btn-text">Про нас</span>
+                            <img src="assets/img/arrow.svg" width="12" height="12" alt="" decoding="async">
+                        </button>
+                        <ul class="nav__submenu" id="submenu-about" data-dropdown-menu hidden>
+                            <li class="nav__submenu-item">
+                                <a class="nav__submenu-link" href="#about-company">Компанія</a>
+                            </li>
+                            <li class="nav__submenu-item">
+                                <a class="nav__submenu-link" href="#about-team">Команда</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <a class="header__phone" href="tel:+380442984088">+38 (044) 298 40 88</a>
+
+            <div class="header__lang lang" data-dropdown>
+                <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-menu-desktop"
+                    aria-haspopup="listbox" data-dropdown-trigger>
+                    <span class="lang__current" data-lang-current>UA</span>
+                    <img src="assets/img/arrow.svg" width="12" height="12" alt="" decoding="async">
+                </button>
+                <ul class="lang__list" id="lang-menu-desktop" role="listbox" aria-label="Обрати мову" data-dropdown-menu
+                    hidden>
+                    <li class="lang__item" role="option" aria-selected="true">
+                        <a class="lang__link is-active" href="?lang=uk" hreflang="uk" lang="uk" data-lang="UA">UA</a>
+                    </li>
+                    <li class="lang__item" role="option" aria-selected="false">
+                        <a class="lang__link" href="?lang=en" hreflang="en" lang="en" data-lang="EN">EN</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="header__actions">
+                <a class="header__cta btn btn--blue" href="#apply">
+                    <span class="header__cta-text header__cta-text--full">Подати заявку</span>
+                    <span class="header__cta-text header__cta-text--short">Заявка</span>
+                </a>
+
+                <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false"
+                    aria-controls="mobile-menu">
+                    <span class="burger__line" aria-hidden="true"></span>
+                    <span class="burger__line" aria-hidden="true"></span>
+                    <span class="burger__line" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu" id="mobile-menu" hidden>
+        <div class="menu__inner wrapper">
+            <nav class="menu__nav" aria-label="Мобільна навігація">
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a class="menu__link" href="#zvitnist">Звітність</a>
+                    </li>
+
+                    <li class="menu__item menu__item--dropdown">
+                        <button class="menu__btn" type="button" aria-expanded="false"
+                            aria-controls="menu-submenu-programs" data-dropdown-trigger>
+                            <span class="menu__btn-text">Програми</span>
+                            <img class="menu__arrow" src="assets/img/arrow2.svg" width="12" height="12" alt=""
+                                decoding="async">
+                        </button>
+                        <ul class="menu__submenu" id="menu-submenu-programs" data-dropdown-menu hidden>
+                            <li class="menu__submenu-item">
+                                <a class="menu__submenu-link" href="#program-1">Програма 1</a>
+                            </li>
+                            <li class="menu__submenu-item">
+                                <a class="menu__submenu-link" href="#program-2">Програма 2</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu__item menu__item--dropdown">
+                        <button class="menu__btn" type="button" aria-expanded="false"
+                            aria-controls="menu-submenu-partners" data-dropdown-trigger>
+                            <span class="menu__btn-text">Партнерам</span>
+                            <img class="menu__arrow" src="assets/img/arrow2.svg" width="12" height="12" alt=""
+                                decoding="async">
+                        </button>
+                        <ul class="menu__submenu" id="menu-submenu-partners" data-dropdown-menu hidden>
+                            <li class="menu__submenu-item">
+                                <a class="menu__submenu-link" href="#partners-1">Умови співпраці</a>
+                            </li>
+                            <li class="menu__submenu-item">
+                                <a class="menu__submenu-link" href="#partners-2">Стати партнером</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu__item menu__item--dropdown">
+                        <button class="menu__btn" type="button" aria-expanded="false" aria-controls="menu-submenu-about"
+                            data-dropdown-trigger>
+                            <span class="menu__btn-text">Про нас</span>
+                            <img class="menu__arrow" src="assets/img/arrow2.svg" width="12" height="12" alt=""
+                                decoding="async">
+                        </button>
+                        <ul class="menu__submenu" id="menu-submenu-about" data-dropdown-menu hidden>
+                            <li class="menu__submenu-item">
+                                <a class="menu__submenu-link" href="#about-company">Компанія</a>
+                            </li>
+                            <li class="menu__submenu-item">
+                                <a class="menu__submenu-link" href="#about-team">Команда</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="menu__contacts">
+                <p class="menu__contacts-title">Відділ по роботі з клієнтами</p>
+                <div class="menu__contacts-item">
+                    <a class="menu__phone" href="tel:+380442984088">+38 044 298 40 88</a>
+                    <a class="menu__phone" href="tel:+380939371010">+38 093 937 10 10</a>
+                </div>
+            </div>
+
+            <div class="menu__contacts">
+                <p class="menu__contacts-title">Електронна пошта</p>
+                <div class="menu__contacts-item">
+                    <a class="menu__email" href="mailto:info@safra-finance.com.ua">info@safra-finance.com.ua</a>
+                </div>
+            </div>
+
+            <div class="menu__contacts">
+                <p class="menu__contacts-title">Графік роботи</p>
+                <div class="menu__contacts-item">
+                    <p class="menu__address">Пн–Пт 09:00–18:00 (без перерви)</p>
+                    <p class="menu__address">Сб–Нд — вихідний</p>
+                </div>
+            </div>
+
+            <div class="menu__contacts">
+                <p class="menu__contacts-title">Місцезнаходження</p>
+                <div class="menu__contacts-item">
+                    <p class="menu__address">03124, Україна, м. Київ, Б. Гавела Вацлава, <br> будинок 4, корпус 45,
+                        кімната 603
+                    </p>
+                </div>
+            </div>
+
+            <ul class="menu__social">
+                <li class="menu__social-item">
+                    <a class="menu__social-link" href="https://www.facebook.com/safra-finance">
+                        <img src="assets/img/social1.svg" width="16" height="16" alt="" decoding="async">
+                    </a>
+                </li>
+                <li class="menu__social-item">
+                    <a class="menu__social-link" href="https://www.instagram.com/safra-finance">
+                        <img src="assets/img/social2.svg" width="16" height="16" alt="" decoding="async">
+                    </a>
+                </li>
+                <li class="menu__social-item">
+                    <a class="menu__social-link" href="https://www.linkedin.com/company/safra-finance">
+                        <img src="assets/img/social3.svg" width="16" height="16" alt="" decoding="async">
+                    </a>
+                </li>
+                <li class="menu__social-item">
+                    <a class="menu__social-link" href="https://www.linkedin.com/company/safra-finance">
+                        <img src="assets/img/social4.svg" width="16" height="16" alt="" decoding="async">
+                    </a>
+                </li>
+            </ul>
+
+            <div class="menu__extra">
+                <a class="menu__extra-link btn btn--transparent" href="#apply">ЗВ’ЯЗАТИСЯ З НАМИ</a>
+                <a class="menu__extra-link btn btn--orange" href="#apply">ОТРИМАТИ КОНСУЛЬТАЦІЮ</a>
+            </div>
+        </div>
+    </div>
+
+    
+    <main class="bg-white">
+        <div class="breadcrumbs">
+            <div class="wrapper">
+                <ul class="breadcrumbs__list">
+                    <li class="breadcrumbs__item">
+                        <a href="index.html" class="breadcrumbs__link">Головна</a>
+                    </li>
+                    <li class="breadcrumbs__item">
+                        <span class="breadcrumbs__span">Калькулятор лізингу</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="calculator" data-calculator data-calculator-product="leasing"
+            aria-labelledby="calculator-leasing-title">
+            <div class="calculator__bg" aria-hidden="true">
+                <img class="calculator__bg-img" src="assets/img/calc-bg.png" width="1920" height="1080" alt=""
+                    loading="lazy" decoding="async">
+            </div>
+            <div class="wrapper">
+                <div class="calculator-header">
+                    <div class="calculator-header__left">
+                        <div class="calculator-header__left-img">
+                            <img src="assets/img/calc-logo.svg" width="240" height="35" alt="" decoding="async">
+                        </div>
+                        <span class="calculator-header__left-text">Фінансовий лізинг</span>
+                    </div>
+                    <div class="calculator-header__right">
+                        <h2 class="calculator-header__right-title">Калькулятор</h2>
+                    </div>
+                </div>
+                <div class="calculator__layout">
+                    <form class="calculator__params" data-calculator-params>
+                        <h2 class="calculator__params-title" id="calculator-leasing-title">Параметри</h2>
+
+                        <fieldset class="calculator__groups">
+                            <legend class="calculator__legend">Види майна</legend>
+                            <div class="calculator__radios calculator__radios--assets">
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-asset"
+                                        value="new-car" checked>
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">Нове авто</span>
+                                </label>
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-asset"
+                                        value="used-car">
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">Вживане авто</span>
+                                </label>
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-asset"
+                                        value="commercial">
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">Комерційний транспорт</span>
+                                </label>
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-asset"
+                                        value="equipment">
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">Обладнання</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <div class="calculator__field">
+                            <label class="calculator__label" for="lease-asset-value">Вартість майна</label>
+                            <input class="calculator__input" id="lease-asset-value" type="text" inputmode="numeric"
+                                autocomplete="off" data-calculator-asset-input value="950 000 грн.">
+                            <input class="calculator__range" type="range" min="10000" max="10000000" step="10000"
+                                value="950000" aria-label="Вартість майна" data-calculator-asset-range>
+                            <div class="calculator__range-bounds">
+                                <span data-calculator-bound="asset-min">10 000 грн.</span>
+                                <span data-calculator-bound="asset-max">10 000 000 грн.</span>
+                            </div>
+                        </div>
+
+                        <div class="calculator__field">
+                            <label class="calculator__label" for="lease-advance">Аванс</label>
+                            <div class="calculator__down">
+                                <input class="calculator__input calculator__input--down" id="lease-advance" type="text"
+                                    inputmode="numeric" autocomplete="off" data-calculator-advance-input
+                                    value="237 500 грн.">
+                                <input class="calculator__input calculator__input--percent" id="lease-advance-percent"
+                                    type="text" inputmode="numeric" autocomplete="off"
+                                    data-calculator-advance-percent value="25%" aria-label="Аванс у %">
+                            </div>
+                            <input class="calculator__range" type="range" min="20" max="70" step="5" value="25"
+                                aria-label="Аванс у відсотках" data-calculator-advance-range>
+                            <div class="calculator__range-bounds">
+                                <span data-calculator-bound="advance-min">20%</span>
+                                <span data-calculator-bound="advance-max">70%</span>
+                            </div>
+                        </div>
+
+                        
+                        <div class="calculator__field">
+                            <label class="calculator__label" for="lease-term">Строк (міс.)</label>
+                            <input class="calculator__input" id="lease-term" type="text" inputmode="numeric"
+                                autocomplete="off" data-calculator-term-input value="36">
+                            <input class="calculator__range" type="range" min="12" max="60" step="1" value="36"
+                                aria-label="Строк у місяцях" data-calculator-term-range>
+                            <div class="calculator__range-bounds">
+                                <span data-calculator-bound="term-min">12 міс.</span>
+                                <span data-calculator-bound="term-max">60 міс.</span>
+                            </div>
+                        </div>
+                        
+                        <fieldset class="calculator__groups2">
+                            <legend class="calculator__legend">Схема погашення</legend>
+                            <div class="calculator__radios calculator__radios--scheme">
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-scheme"
+                                        value="annuity" data-calculator-scheme checked>
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">Ануїтет</span>
+                                </label>
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-scheme"
+                                        value="classic" data-calculator-scheme>
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">Класичний</span>
+                                </label>
+                                <label class="calculator__radio">
+                                    <input class="calculator__radio-input visually-hidden" type="radio" name="lease-scheme"
+                                        value="interest_only" data-calculator-scheme>
+                                    <span class="calculator__radio-mark" aria-hidden="true"></span>
+                                    <span class="calculator__radio-text">В кінці строку</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    
+                    <aside class="calculator__result" data-calculator-result aria-live="polite">
+                        <div class="calculator__result-header">
+                            <h3 class="calculator__result-title">Попередній розрахунок</h3>
+                            <span class="calculator__result-note">Демонстраційний приклад</span>
+                        </div>
+
+                        <dl class="calculator__result-list">
+                            <div class="calculator__result-row">
+                                <dt>Сума фінансування</dt>
+                                <dd data-calculator-out="principal">0 грн</dd>
+                            </div>
+                            <div class="calculator__result-row" data-calculator-row="down">
+                                <dt>Початковий внесок / аванс</dt>
+                                <dd data-calculator-out="down">0 грн</dd>
+                            </div>
+                            <div class="calculator__result-row" data-calculator-row="maxLoan">
+                                <dt>Макс. доступна сума</dt>
+                                <dd data-calculator-out="maxLoan">0 грн</dd>
+                            </div>
+                            <div class="calculator__result-row">
+                                <dt>Строк</dt>
+                                <dd data-calculator-out="term">36 місяців</dd>
+                            </div>
+                            <div class="calculator__result-row">
+                                <dt>Ставка</dt>
+                                <dd data-calculator-out="rate">18 % річних</dd>
+                            </div>
+                            <div class="calculator__result-row">
+                                <dt>Обрана схема</dt>
+                                <dd data-calculator-out="scheme">Ануїтет</dd>
+                            </div>
+                        </dl>
+
+                        <div class="calculator__result-box" data-calculator-show-scheme="annuity classic">
+                            <span class="calculator__result-box-label">Орієнтовний платіж</span>
+                            <span class="calculator__result-box-value calculator__result-box-value--accent"
+                                data-calculator-out="payment">0 грн/міс</span>
+                        </div>
+
+                        <div class="calculator__result-box" data-calculator-show-scheme="interest_only" hidden>
+                            <span class="calculator__result-box-label">Перший платіж</span>
+                            <span class="calculator__result-box-value calculator__result-box-value--accent"
+                                data-calculator-out="firstPayment">0 грн</span>
+                        </div>
+                        <div class="calculator__result-box" data-calculator-show-scheme="interest_only" hidden>
+                            <span class="calculator__result-box-label">Останній платіж</span>
+                            <span class="calculator__result-box-value"
+                                data-calculator-out="lastPayment">0 грн</span>
+                        </div>
+
+                        <dl class="calculator__result-list">
+                            <div class="calculator__result-row">
+                                <dt>Відсотки за весь строк</dt>
+                                <dd data-calculator-out="interest">0 грн</dd>
+                            </div>
+                            <div class="calculator__result-row">
+                                <dt>Разова комісія</dt>
+                                <dd data-calculator-out="fee">0 грн</dd>
+                            </div>
+                            <div class="calculator__result-row">
+                                <dt>Страхування/інші витрати</dt>
+                                <dd data-calculator-out="insurance">0 грн</dd>
+                            </div>
+                        </dl>
+
+                        <div class="calculator__result-box calculator__result-box--total">
+                            <span class="calculator__result-box-label">Загальна сума платежів</span>
+                            <div class="calculator__result-box-aside">
+                                <span class="calculator__result-box-value" data-calculator-out="total">0 грн</span>
+                                <span class="calculator__result-box-hint">З урахуванням початкового внеску</span>
+                            </div>
+                        </div>
+
+                        <a class="calculator__cta btn btn--orange" href="#apply">
+                            ПОДАТИ ЗАЯВКУ
+                            <img src="assets/img/btn-arrow.svg" width="20" height="20" alt="" decoding="async">
+                        </a>
+
+                        <p class="calculator__disclaimer">
+                            <img class="calculator__disclaimer-icon" src="assets/img/info.svg" width="20" height="20"
+                                alt="" decoding="async">
+                            <span>Прорахунок є попереднім, для більш точного залиште заявку для опрацювання нашим
+                                співробітником.</span>
+                        </p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+<footer class="footer">
+        <div class="footer__bg" aria-hidden="true">
+            <img class="footer__bg-img" src="assets/img/footer-bg.png" width="1560" height="1018" alt=""
+                decoding="async">
+        </div>
+        <div class="wrapper">
+            <div class="footer__top">
+                <div class="footer__top-left">
+                    <div class="footer__top-left-box">
+                        <a href="#" class="footer__top-left-box-logo">
+                            <img src="assets/img/footer-logo.svg" width="126" height="92" alt="">
+                        </a>
+                        <p>Допомагаємо українському бізнесу зростати, надаючи доступні та зручні фінансові рішення по
+                            всій країні.
+                        </p>
+                    </div>
+                    <div class="footer__top-left-action">
+                        <a href="#" class="footer__top-left-action-btn btn btn--transparent">
+                            ЗВ’ЯЗАТИСЯ З НАМИ
+                        </a>
+                        <a href="#" class="footer__top-left-action-link btn btn--orange">
+                            ОТРИМАТИ КОНСУЛЬТАЦІЮ
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__top-right">
+                    <h3 class="footer__top-right-title">КОНТАКТИ</h3>
+                    <div class="footer__top-right-list">
+                        <div class="footer__top-right-item">
+                            <span class="footer__top-right-item-label">Відділ по роботі з клієнтами</span>
+                            <ul class="footer__top-right-item-list">
+                                <li class="footer__top-right-item-list-item">
+                                    <a href="tel:+380442984088" class="footer__top-right-item-list-link">+38 044 298 40
+                                        88</a>
+                                </li>
+                                <li class="footer__top-right-item-list-item">
+                                    <a href="tel:+380442984088" class="footer__top-right-item-list-link">+38 093 937 10
+                                        10</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer__top-right-item">
+                            <span class="footer__top-right-item-label">Електронна пошта</span>
+                            <ul class="footer__top-right-item-list">
+                                <li class="footer__top-right-item-list-item">
+                                    <a href="mailto:info@safra-finance.com.ua"
+                                        class="footer__top-right-item-list-link">info@safra-finance.com.ua</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer__top-right-item">
+                            <span class="footer__top-right-item-label">Графік роботи</span>
+                            <ul class="footer__top-right-item-list">
+                                <li class="footer__top-right-item-list-item">
+                                    <span class="footer__top-right-item-list-link">Пн–Пт 09:00–18:00 (без
+                                        перерви)</span>
+                                </li>
+                                <li class="footer__top-right-item-list-item">
+                                    <span class="footer__top-right-item-list-link">Сб–Нд — вихідний</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer__top-right-item">
+                            <span class="footer__top-right-item-label">Місцезнаходження</span>
+                            <ul class="footer__top-right-item-list">
+                                <li class="footer__top-right-item-list-item">
+                                    <span class="footer__top-right-item-list-link">03124, Україна, м. Київ, Б. Гавела
+                                        Вацлава, будинок 4,
+                                        корпус 45, кімната 603</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer__top-right-item">
+                            <ul class="footer__top-right-item-social">
+                                <li class="footer__top-right-item-social-item">
+                                    <a href="#" class="footer__top-right-item-social-link">
+                                        <img src="assets/img/footer-social-icon1.svg" width="24" height="24" alt="">
+                                    </a>
+                                </li>
+                                <li class="footer__top-right-item-social-item">
+                                    <a href="#" class="footer__top-right-item-social-link">
+                                        <img src="assets/img/footer-social-icon2.svg" width="24" height="24" alt="">
+                                    </a>
+                                </li>
+                                <li class="footer__top-right-item-social-item">
+                                    <a href="#" class="footer__top-right-item-social-link">
+                                        <img src="assets/img/footer-social-icon3.svg" width="24" height="24" alt="">
+                                    </a>
+                                </li>
+                                <li class="footer__top-right-item-social-item">
+                                    <a href="#" class="footer__top-right-item-social-link">
+                                        <img src="assets/img/footer-social-icon4.svg" width="24" height="24" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__bottom-content">
+                    <div class="footer__bottom-content-accardion">
+                        <h3 class="footer__bottom-content-accardion-title">ЮРИДИЧНА ТА РЕГУЛЯТОРА ІНФОРМАЦІЯ</h3>
+
+                        <div class="footer__bottom-content-accardion-item">
+                            <button class="footer__bottom-content-accardion-button" type="button" aria-expanded="false"
+                                aria-controls="footer-acc-debtors">
+                                <h3 class="footer__bottom-content-accardion-title">Контакти для споживачів та інших осіб
+                                </h3>
+                                <img class="footer__bottom-content-accardion-arrow" src="assets/img/arrow3.svg"
+                                    width="12" height="12" alt="" decoding="async">
+                            </button>
+                            <div class="footer__bottom-content-accardion-panel" id="footer-acc-debtors" hidden>
+                                <p class="footer__bottom-content-accardion-text">
+                                    Контакти для споживачів та інших осіб, які належать до захищеної категорії
+
+                                    Відділ по роботі з клієнтами:
+                                    +38 044 298 40 88, +38 093 937 10 10
+
+                                    Електронна пошта:
+                                    info@safra-finance.com.ua
+
+                                    Місцезнаходження та адреса для кореспонденції:
+                                    03124, Україна, місто Київ, Б. Гавела Вацлава, будинок 4, корпус 45, кімната 603.
+
+                                    Графік роботи:
+                                    Пн–пт: 09:00–18:00, без перерви.
+                                    Сб–нд: вихідний.
+
+                                    Директор:
+                                    Сізов Анатолій В’ячеславович
+                                    +38 067 577 71 07
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="footer__bottom-content-accardion-item">
+                            <button class="footer__bottom-content-accardion-button" type="button" aria-expanded="false"
+                                aria-controls="footer-acc-debtors">
+                                <h3 class="footer__bottom-content-accardion-title">Взаємодія із боржниками</h3>
+                                <img class="footer__bottom-content-accardion-arrow" src="assets/img/arrow3.svg"
+                                    width="12" height="12" alt="" decoding="async">
+                            </button>
+                            <div class="footer__bottom-content-accardion-panel" id="footer-acc-debtors" hidden>
+                                <p class="footer__bottom-content-accardion-text">
+                                    Інформація про порядок взаємодії з боржниками та врегулювання простроченої
+                                    заборгованості.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="footer__bottom-content-accardion-item">
+                            <button class="footer__bottom-content-accardion-button" type="button" aria-expanded="false"
+                                aria-controls="footer-acc-indicators">
+                                <h3 class="footer__bottom-content-accardion-title">Основні показники діяльності</h3>
+                                <img class="footer__bottom-content-accardion-arrow" src="assets/img/arrow3.svg"
+                                    width="12" height="12" alt="" decoding="async">
+                            </button>
+                            <div class="footer__bottom-content-accardion-panel" id="footer-acc-indicators" hidden>
+                                <p class="footer__bottom-content-accardion-text">
+                                    Основні показники діяльності фінансової компанії відповідно до вимог регулятора.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="footer__bottom-content-accardion-item">
+                            <button class="footer__bottom-content-accardion-button" type="button" aria-expanded="false"
+                                aria-controls="footer-acc-regulation">
+                                <h3 class="footer__bottom-content-accardion-title">Державне регулювання</h3>
+                                <img class="footer__bottom-content-accardion-arrow" src="assets/img/arrow3.svg"
+                                    width="12" height="12" alt="" decoding="async">
+                            </button>
+                            <div class="footer__bottom-content-accardion-panel" id="footer-acc-regulation" hidden>
+                                <p class="footer__bottom-content-accardion-text">
+                                    Інформація про державне регулювання діяльності ТОВ «САФРА ФІНАНС». Регулятор —
+                                    Національний банк
+                                    України.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="footer__bottom-content-accardion-item">
+                            <button class="footer__bottom-content-accardion-button" type="button" aria-expanded="false"
+                                aria-controls="footer-acc-licenses">
+                                <h3 class="footer__bottom-content-accardion-title">Ліцензії та документи</h3>
+                                <img class="footer__bottom-content-accardion-arrow" src="assets/img/arrow3.svg"
+                                    width="12" height="12" alt="" decoding="async">
+                            </button>
+                            <div class="footer__bottom-content-accardion-panel" id="footer-acc-licenses" hidden>
+                                <p class="footer__bottom-content-accardion-text">
+                                    Ліцензії, свідоцтва та інші документи, що підтверджують право компанії надавати
+                                    фінансові послуги.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__bottom-content-list">
+                        <h3 class="footer__bottom-content-accardion-title">ПРОДУКТИ</h3>
+                        <ul class="footer__bottom-content-list-item">
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Кредити для бізнесу</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Кредити для фізичних осіб</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Лізинг</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Партнерські програми</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__bottom-content-list">
+                        <h3 class="footer__bottom-content-accardion-title">ПРО КОМПАНІЮ</h3>
+                        <ul class="footer__bottom-content-list-item">
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Про нас</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Відгуки</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Кейси</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Новини</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Контакти</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__bottom-content-list">
+                        <h3 class="footer__bottom-content-accardion-title">КОРИСНА ІНФОРМАЦІЯ</h3>
+                        <ul class="footer__bottom-content-list-item">
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Як отримати фінансування</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Умови кредитування</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Приклади розрахунків</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Звітність</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Правова інформація</a>
+                            </li>
+                            <li class="footer__bottom-content-list-item">
+                                <a href="#" class="footer__bottom-content-list-link">Інформація для споживачів</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom-copyright">
+                    <p>ТОВ «САФРА ФІНАНС» · Код ЄДРПОУ 43931541. Свідоцтво про реєстрацію фінансової установи ФК №
+                        В0000235 від
+                        07.05.2021 р., видане Національним банком України. ТОВ «САФРА ФІНАНС» надає фінансові послуги з
+                        надання
+                        коштів у позику, у тому числі на умовах фінансового кредиту, та фінансового лізингу відповідно
+                        до
+                        законодавства України.
+                        Регулятор: Національний банк України. © 2026 SAFRA FINANCE. Всі права захищені. All content is
+                        available
+                        under the Creative Commons Attribution 4.0 International license unless otherwise noted. </p>
+                    <div class="footer__bottom-copyright-links">
+                        <span>Designed by</span>
+                        <a href="/" target="_blank">
+                            <img src="assets/img/footer-copyright-link.svg" width="140" height="24" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <dialog class="popup popup--form" id="popup-apply" aria-labelledby="popup-apply-title">
+        <div class="popup__panel">
+            <button class="popup__close" type="button" data-popup-close aria-label="Закрити">
+                <img src="assets/img/popup-close.svg" width="14" height="14" alt="" decoding="async">
+            </button>
+
+            <div class="popup__header">
+                <h2 class="popup__title" id="popup-apply-title">Обговоримо ваші плани</h2>
+                <p class="popup__text">
+                    Залиште контакти — ми зв’яжемося з вами та допоможемо обрати фінансове рішення.
+                </p>
+            </div>
+
+            <form class="popup__form" id="popup-apply-form" novalidate>
+                <div class="popup__field">
+                    <input class="popup__field-input" type="text" name="name" placeholder="Ваше ім'я"
+                        aria-label="Ваше ім'я" autocomplete="name" required>
+                </div>
+
+                <div class="popup__field">
+                    <input class="popup__field-input" type="tel" name="phone" placeholder="Телефон" aria-label="Телефон"
+                        autocomplete="tel" required>
+                </div>
+
+                <div class="popup__field">
+                    <input class="popup__field-input" type="email" name="email" placeholder="EMAIL" aria-label="EMAIL"
+                        autocomplete="email" required>
+                </div>
+
+                <div class="popup__field">
+                    <input class="popup__field-input" type="text" name="note" placeholder="Примітка"
+                        aria-label="Примітка" autocomplete="off">
+                </div>
+
+                <button class="popup__submit btn btn--blue" type="submit">НАДІСЛАТИ ЗАЯВКУ</button>
+            </form>
+
+            <p class="popup__privacy">
+                <img class="popup__privacy-icon" src="assets/img/check.svg" width="15" height="17" alt=""
+                    decoding="async">
+                <span>
+                    Ваші дані захищені та не передаються третім особам. Натискаючи «Надіслати заявку», ви погоджуєтеся з
+                    <a class="popup__privacy-link" href="#">Політикою конфіденційності</a>.
+                </span>
+            </p>
+        </div>
+    </dialog>
+
+    <dialog class="popup popup--success" id="popup-success" aria-labelledby="popup-success-title">
+        <div class="popup__panel">
+            <button class="popup__close" type="button" data-popup-close aria-label="Закрити">
+                <img src="assets/img/popup-close.svg" width="14" height="14" alt="" decoding="async">
+            </button>
+
+            <div class="popup__success">
+                <img class="popup__success-icon" src="assets/img/popup-check.svg" width="64" height="64" alt=""
+                    decoding="async">
+                <h2 class="popup__title" id="popup-success-title">Дякуємо за вашу заявку!</h2>
+                <p class="popup__text">
+                    Ми отримали ваші дані. Менеджер Safra Finance зв’яжеться з вами найближчим часом.
+                </p>
+
+                <div class="popup__note">
+                    <span class="popup__note-icon" aria-hidden="true">
+                        <img src="assets/img/popup-clock.svg" width="24" height="24" alt="" decoding="async">
+                    </span>
+                    <p class="popup__note-text">
+                        Зазвичай ми зв’язуємося протягом <strong>15–30 хвилин у робочий час </strong>
+                    </p>
+                </div>
+
+                <button class="popup__submit btn btn--blue" type="button" data-popup-close>
+                    ЧУДОВО, ДЯКУЮ
+                </button>
+            </div>
+        </div>
+    </dialog>
+
+
+
+    <script src="js/vendor/lenis.min.js"></script>
+    <script src="js/vendor/gsap.min.js"></script>
+    <script src="js/vendor/ScrollTrigger.min.js"></script>
+    <script src="js/vendor/aos.js"></script>
+    <script src="js/vendor/swiper-bundle.min.js"></script>
+    <script src="js/vendor/fancybox.umd.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1329 @@
+{
+  "generatedAt": "2026-10-01T10:01:25.568Z",
+  "overall": "PASS",
+  "existing": {
+    "ok": true,
+    "passed": 23,
+    "total": 23,
+    "results": [
+      {
+        "name": "LEASING P=700000 R=0.288 n=12 annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 67828.47,
+          "last": 67828.44,
+          "interest": 113941.61,
+          "total": 813941.61
+        }
+      },
+      {
+        "name": "LEASING P=700000 R=0.288 n=36 annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 29257.89,
+          "last": 29258.13,
+          "interest": 353284.28,
+          "total": 1053284.28
+        }
+      },
+      {
+        "name": "LEASING P=700000 R=0.288 n=36 classic",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 36244.44,
+          "last": 19911.27,
+          "interest": 310800.07,
+          "total": 1010800.07
+        }
+      },
+      {
+        "name": "BUSINESS PURCHASE P=700000 R=0.2825 n=36 annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 29049.14,
+          "last": 29049.03,
+          "interest": 345768.93,
+          "total": 1045768.93
+        }
+      },
+      {
+        "name": "BUSINESS PURCHASE P=700000 R=0.2825 n=36 classic",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 35923.61,
+          "last": 19902.36,
+          "interest": 304864.65,
+          "total": 1004864.65
+        }
+      },
+      {
+        "name": "BUSINESS BULLET P=700000 R=0.2825 n=36",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 16479.17,
+          "last": 716479.17,
+          "interest": 593250.12,
+          "total": 1293250.12
+        }
+      },
+      {
+        "name": "WORKING CAPITAL P=120000 R=0.2825 n=12 annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 11595.4,
+          "last": 11595.42,
+          "interest": 19144.82,
+          "total": 139144.82
+        }
+      },
+      {
+        "name": "INDIVIDUAL P=120000 R=0.36 n=12 annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 12055.45,
+          "last": 12055.46,
+          "interest": 24665.41,
+          "total": 144665.41
+        }
+      },
+      {
+        "name": "INDIVIDUAL P=120000 R=0.36 n=36 annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 5496.46,
+          "last": 5496.18,
+          "interest": 77872.28,
+          "total": 197872.28
+        }
+      },
+      {
+        "name": "normalizePercentStep 23 → 25",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "snap": 25
+        }
+      },
+      {
+        "name": "tariff demo rates (catalogue)",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "leasing": 0.288,
+          "business": 0.2825,
+          "individual": 0.36
+        }
+      },
+      {
+        "name": "1. Leasing advance 23% → 25%",
+        "ok": true,
+        "mismatches": [],
+        "got": 25
+      },
+      {
+        "name": "2. Leasing advance < 20 → min 20",
+        "ok": true,
+        "mismatches": [],
+        "got": 20
+      },
+      {
+        "name": "3. Individual term 60 → clamp 36",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 36,
+          "monthsClamped": true
+        }
+      },
+      {
+        "name": "4. Leasing Bullet unavailable",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "schemes": [
+            "annuity",
+            "classic"
+          ],
+          "scheme": "annuity",
+          "rejected": true
+        }
+      },
+      {
+        "name": "5. Individual Bullet unavailable",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "schemes": [
+            "annuity",
+            "classic"
+          ],
+          "scheme": "annuity",
+          "rejected": true
+        }
+      },
+      {
+        "name": "6. Business Bullet only if tariff allows",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "allowScheme": "interest_only",
+          "denyScheme": "annuity",
+          "denyAllowsBullet": false
+        }
+      },
+      {
+        "name": "7. Working capital down payment ignored",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "down": 0,
+          "principal": 120000,
+          "ignored": true
+        }
+      },
+      {
+        "name": "8. Individual requestedLoan > LTV → clamp",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 700000,
+          "maxAvailableLoan": 700000,
+          "clampedByLtv": true
+        }
+      },
+      {
+        "name": "9. No active tariff → error (no demo-rate calc)",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "no_active_tariff",
+          "annualRate": 0,
+          "principal": 0
+        }
+      },
+      {
+        "name": "10. Business amount 1 234 567 → 1 230 000",
+        "ok": true,
+        "mismatches": [],
+        "got": 1230000
+      },
+      {
+        "name": "11. Exact midpoint rounds up",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "amount": 1240000,
+          "percent": 25
+        }
+      },
+      {
+        "name": "12. Never negative closingBalance / last = 0",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "negatives": []
+        }
+      }
+    ],
+    "failed": [],
+    "businessRules": {
+      "ok": true,
+      "passed": 12,
+      "total": 12,
+      "results": [
+        {
+          "name": "1. Leasing advance 23% → 25%",
+          "ok": true,
+          "mismatches": [],
+          "got": 25
+        },
+        {
+          "name": "2. Leasing advance < 20 → min 20",
+          "ok": true,
+          "mismatches": [],
+          "got": 20
+        },
+        {
+          "name": "3. Individual term 60 → clamp 36",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "months": 36,
+            "monthsClamped": true
+          }
+        },
+        {
+          "name": "4. Leasing Bullet unavailable",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "schemes": [
+              "annuity",
+              "classic"
+            ],
+            "scheme": "annuity",
+            "rejected": true
+          }
+        },
+        {
+          "name": "5. Individual Bullet unavailable",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "schemes": [
+              "annuity",
+              "classic"
+            ],
+            "scheme": "annuity",
+            "rejected": true
+          }
+        },
+        {
+          "name": "6. Business Bullet only if tariff allows",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "allowScheme": "interest_only",
+            "denyScheme": "annuity",
+            "denyAllowsBullet": false
+          }
+        },
+        {
+          "name": "7. Working capital down payment ignored",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "down": 0,
+            "principal": 120000,
+            "ignored": true
+          }
+        },
+        {
+          "name": "8. Individual requestedLoan > LTV → clamp",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "principal": 700000,
+            "maxAvailableLoan": 700000,
+            "clampedByLtv": true
+          }
+        },
+        {
+          "name": "9. No active tariff → error (no demo-rate calc)",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "error": "no_active_tariff",
+            "annualRate": 0,
+            "principal": 0
+          }
+        },
+        {
+          "name": "10. Business amount 1 234 567 → 1 230 000",
+          "ok": true,
+          "mismatches": [],
+          "got": 1230000
+        },
+        {
+          "name": "11. Exact midpoint rounds up",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "amount": 1240000,
+            "percent": 25
+          }
+        },
+        {
+          "name": "12. Never negative closingBalance / last = 0",
+          "ok": true,
+          "mismatches": [],
+          "got": {
+            "negatives": []
+          }
+        }
+      ],
+      "failed": []
+    }
+  },
+  "robustness": {
+    "ok": true,
+    "passed": 36,
+    "total": 36,
+    "results": [
+      {
+        "name": "R1. ZERO RATE annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "first": 100000,
+          "last": 100000,
+          "interest": 0,
+          "total": 1200000
+        }
+      },
+      {
+        "name": "R2. ROUNDING STRESS annuity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "interest": 62837.22,
+          "total": 186294.22,
+          "sumPrincipal": 123457
+        }
+      },
+      {
+        "name": "R2. ROUNDING STRESS classic",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "interest": 55221.22,
+          "total": 178678.22,
+          "sumPrincipal": 123457
+        }
+      },
+      {
+        "name": "R3. Leasing term 12",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 12,
+          "clamped": false,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Leasing term 60",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 60,
+          "clamped": false,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Leasing term 11 → min 12",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 12,
+          "clamped": true,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Leasing term 61 → max 60",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 60,
+          "clamped": true,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Business term 3",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 3,
+          "clamped": false,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Business term 60",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 60,
+          "clamped": false,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Business term 2 → min 3",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 3,
+          "clamped": true,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Business term 61 → max 60",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 60,
+          "clamped": true,
+          "principal": 750000
+        }
+      },
+      {
+        "name": "R3. Individual term 3",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 3,
+          "clamped": false,
+          "principal": 100000
+        }
+      },
+      {
+        "name": "R3. Individual term 36",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 36,
+          "clamped": false,
+          "principal": 100000
+        }
+      },
+      {
+        "name": "R3. Individual term 2 → min 3",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 3,
+          "clamped": true,
+          "principal": 100000
+        }
+      },
+      {
+        "name": "R3. Individual term 37 → max 36",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "months": 36,
+          "clamped": true,
+          "principal": 100000
+        }
+      },
+      {
+        "name": "R4. Leasing amount = minAsset",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 7500,
+          "assetValue": 10000
+        }
+      },
+      {
+        "name": "R4. Leasing amount = maxAsset",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 7500000,
+          "assetValue": 10000000
+        }
+      },
+      {
+        "name": "R4. Leasing amount < min → clamp",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 7500,
+          "assetValue": 10000
+        }
+      },
+      {
+        "name": "R4. Leasing amount > max → clamp",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 7500000,
+          "assetValue": 10000000
+        }
+      },
+      {
+        "name": "R4. Business WC amount = min",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 50000
+        }
+      },
+      {
+        "name": "R4. Business WC amount = max",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 50000000
+        }
+      },
+      {
+        "name": "R4. Business WC amount < min → clamp",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 50000
+        }
+      },
+      {
+        "name": "R4. Business WC amount > max → clamp",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 50000000
+        }
+      },
+      {
+        "name": "R4. Business purchase amount = minAsset",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 10000,
+          "assetValue": 10000
+        }
+      },
+      {
+        "name": "R4. Business purchase amount = maxAsset",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 10000000,
+          "assetValue": 10000000
+        }
+      },
+      {
+        "name": "R4. Individual LTV caps over maxAmount",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "principal": 700000,
+          "maxAvailableLoan": 700000,
+          "maxByLtv": 700000,
+          "tariffMax": 10000000
+        }
+      },
+      {
+        "name": "R4. Individual amount at min market / loan=0 handled",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_principal",
+          "principal": 0
+        }
+      },
+      {
+        "name": "R5. principal = NaN",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_principal",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. principal = Infinity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_principal",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. principal = -1000",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_principal",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. principal = \"\"",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_principal",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. months = 0",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_months",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. months = NaN",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_months",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. annualRate = NaN",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_rate",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. annualRate = Infinity",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_rate",
+          "scheduleLength": 0
+        }
+      },
+      {
+        "name": "R5. annualRate < 0",
+        "ok": true,
+        "mismatches": [],
+        "got": {
+          "error": "invalid_rate",
+          "scheduleLength": 0
+        }
+      }
+    ],
+    "failed": []
+  },
+  "results": [
+    {
+      "name": "LEASING P=700000 R=0.288 n=12 annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 67828.47,
+        "last": 67828.44,
+        "interest": 113941.61,
+        "total": 813941.61
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "LEASING P=700000 R=0.288 n=36 annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 29257.89,
+        "last": 29258.13,
+        "interest": 353284.28,
+        "total": 1053284.28
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "LEASING P=700000 R=0.288 n=36 classic",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 36244.44,
+        "last": 19911.27,
+        "interest": 310800.07,
+        "total": 1010800.07
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "BUSINESS PURCHASE P=700000 R=0.2825 n=36 annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 29049.14,
+        "last": 29049.03,
+        "interest": 345768.93,
+        "total": 1045768.93
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "BUSINESS PURCHASE P=700000 R=0.2825 n=36 classic",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 35923.61,
+        "last": 19902.36,
+        "interest": 304864.65,
+        "total": 1004864.65
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "BUSINESS BULLET P=700000 R=0.2825 n=36",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 16479.17,
+        "last": 716479.17,
+        "interest": 593250.12,
+        "total": 1293250.12
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "WORKING CAPITAL P=120000 R=0.2825 n=12 annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 11595.4,
+        "last": 11595.42,
+        "interest": 19144.82,
+        "total": 139144.82
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "INDIVIDUAL P=120000 R=0.36 n=12 annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 12055.45,
+        "last": 12055.46,
+        "interest": 24665.41,
+        "total": 144665.41
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "INDIVIDUAL P=120000 R=0.36 n=36 annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 5496.46,
+        "last": 5496.18,
+        "interest": 77872.28,
+        "total": 197872.28
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "normalizePercentStep 23 → 25",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "snap": 25
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "tariff demo rates (catalogue)",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "leasing": 0.288,
+        "business": 0.2825,
+        "individual": 0.36
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "1. Leasing advance 23% → 25%",
+      "ok": true,
+      "mismatches": [],
+      "got": 25,
+      "suite": "existing"
+    },
+    {
+      "name": "2. Leasing advance < 20 → min 20",
+      "ok": true,
+      "mismatches": [],
+      "got": 20,
+      "suite": "existing"
+    },
+    {
+      "name": "3. Individual term 60 → clamp 36",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 36,
+        "monthsClamped": true
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "4. Leasing Bullet unavailable",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "schemes": [
+          "annuity",
+          "classic"
+        ],
+        "scheme": "annuity",
+        "rejected": true
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "5. Individual Bullet unavailable",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "schemes": [
+          "annuity",
+          "classic"
+        ],
+        "scheme": "annuity",
+        "rejected": true
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "6. Business Bullet only if tariff allows",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "allowScheme": "interest_only",
+        "denyScheme": "annuity",
+        "denyAllowsBullet": false
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "7. Working capital down payment ignored",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "down": 0,
+        "principal": 120000,
+        "ignored": true
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "8. Individual requestedLoan > LTV → clamp",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 700000,
+        "maxAvailableLoan": 700000,
+        "clampedByLtv": true
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "9. No active tariff → error (no demo-rate calc)",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "no_active_tariff",
+        "annualRate": 0,
+        "principal": 0
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "10. Business amount 1 234 567 → 1 230 000",
+      "ok": true,
+      "mismatches": [],
+      "got": 1230000,
+      "suite": "existing"
+    },
+    {
+      "name": "11. Exact midpoint rounds up",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "amount": 1240000,
+        "percent": 25
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "12. Never negative closingBalance / last = 0",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "negatives": []
+      },
+      "suite": "existing"
+    },
+    {
+      "name": "R1. ZERO RATE annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "first": 100000,
+        "last": 100000,
+        "interest": 0,
+        "total": 1200000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R2. ROUNDING STRESS annuity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "interest": 62837.22,
+        "total": 186294.22,
+        "sumPrincipal": 123457
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R2. ROUNDING STRESS classic",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "interest": 55221.22,
+        "total": 178678.22,
+        "sumPrincipal": 123457
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Leasing term 12",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 12,
+        "clamped": false,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Leasing term 60",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 60,
+        "clamped": false,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Leasing term 11 → min 12",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 12,
+        "clamped": true,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Leasing term 61 → max 60",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 60,
+        "clamped": true,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Business term 3",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 3,
+        "clamped": false,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Business term 60",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 60,
+        "clamped": false,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Business term 2 → min 3",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 3,
+        "clamped": true,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Business term 61 → max 60",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 60,
+        "clamped": true,
+        "principal": 750000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Individual term 3",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 3,
+        "clamped": false,
+        "principal": 100000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Individual term 36",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 36,
+        "clamped": false,
+        "principal": 100000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Individual term 2 → min 3",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 3,
+        "clamped": true,
+        "principal": 100000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R3. Individual term 37 → max 36",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "months": 36,
+        "clamped": true,
+        "principal": 100000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Leasing amount = minAsset",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 7500,
+        "assetValue": 10000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Leasing amount = maxAsset",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 7500000,
+        "assetValue": 10000000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Leasing amount < min → clamp",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 7500,
+        "assetValue": 10000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Leasing amount > max → clamp",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 7500000,
+        "assetValue": 10000000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Business WC amount = min",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 50000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Business WC amount = max",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 50000000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Business WC amount < min → clamp",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 50000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Business WC amount > max → clamp",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 50000000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Business purchase amount = minAsset",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 10000,
+        "assetValue": 10000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Business purchase amount = maxAsset",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 10000000,
+        "assetValue": 10000000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Individual LTV caps over maxAmount",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "principal": 700000,
+        "maxAvailableLoan": 700000,
+        "maxByLtv": 700000,
+        "tariffMax": 10000000
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R4. Individual amount at min market / loan=0 handled",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_principal",
+        "principal": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. principal = NaN",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_principal",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. principal = Infinity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_principal",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. principal = -1000",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_principal",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. principal = \"\"",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_principal",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. months = 0",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_months",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. months = NaN",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_months",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. annualRate = NaN",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_rate",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. annualRate = Infinity",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_rate",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    },
+    {
+      "name": "R5. annualRate < 0",
+      "ok": true,
+      "mismatches": [],
+      "got": {
+        "error": "invalid_rate",
+        "scheduleLength": 0
+      },
+      "suite": "robustness"
+    }
+  ]
+}
